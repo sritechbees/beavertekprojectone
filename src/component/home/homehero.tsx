@@ -1,0 +1,55 @@
+import App_layout from "../layout/applayout";
+import BeaverHealthAI from "./BeaverHealthAI";
+import BigCompanyThinking from "./BigCompanyThinking";
+import OneTeam from "./OneTeam";
+import ExperienceThat from "./ExperienceThat";
+import BuiltAround from "./BuiltAround";
+import CaseStudies from "./WorkThatMoves";
+import DrivingSuccess from "./DrivingSuccess";
+import TheRightShape from "./TheRightShape";
+import GoodQuestions from "./GoodQuestions";
+import NeedSenior from "./NeedSenior";
+import SeniorEngineers from "./SeniorEngineers";
+
+export default function Home() {
+  return (
+    <>
+      <App_layout>
+        <main id="main" className="overflow-hidden bg-white">
+          {/* HERO */}
+
+          <SeniorEngineers />
+          {/* ABOUT */}
+
+          <BigCompanyThinking />
+
+          {/* SERVICES */}
+          <OneTeam />
+
+          {/* WHY BEAVERTEK */}
+          <ExperienceThat />
+          {/* INDUSTRIES */}
+          <BuiltAround />
+
+          {/* PRODUCTS */}
+
+          <BeaverHealthAI />
+          {/* CASE STUDIES */}
+          <CaseStudies />
+
+          {/* TESTIMONIALS */}
+          <DrivingSuccess />
+
+          {/* ENGAGEMENT */}
+          <TheRightShape />
+
+          {/* FAQ */}
+          <GoodQuestions />
+
+          {/* CONTACT CTA */}
+          <NeedSenior />
+        </main>
+      </App_layout>
+    </>
+  );
+}

@@ -1,15 +1,17 @@
 
 "use client";
 
+import { useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowRight,
   ArrowUpRight,
-  MapPin,
   Phone,
   Building2,
   Globe2,
 } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const servicePillars = [
   {
@@ -80,70 +82,67 @@ const resourceLinks = [
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  useEffect(() => {
+    AOS.init({
+      duration: 850,
+      once: true,
+      offset: 50,
+      easing: "ease-out-cubic",
+      mirror: false,
+      anchorPlacement: "top-bottom",
+    });
+
+    AOS.refresh();
+
+    return () => {
+      AOS.refreshHard();
+    };
+  }, []);
+
   return (
-    <footer className="relative overflow-hidden bg-[#050507] text-white">
+    <footer className="relative isolate overflow-hidden bg-[#050507] text-white">
 
-      {/* TOP CTA SECTION */}
-      <div className="relative border-b border-white/10">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#29B6F0]/10 via-[#7A4FD1]/10 to-[#B93FC9]/10" />
+      {/* BACKGROUND EFFECTS */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 top-0 -z-10 h-[450px] w-[450px] rounded-full bg-[#29B6F0]/[0.08] blur-[140px]"
+      />
 
-        <div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10 lg:py-16">
-          <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 bottom-0 -z-10 h-[450px] w-[450px] rounded-full bg-[#7A4FD1]/[0.10] blur-[140px]"
+      />
 
-            <div className="max-w-2xl">
-              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#29B6F0]">
-                Let's Build Something Better
-              </p>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[url('/tech-grid.svg')] opacity-[0.07]"
+      />
 
-              <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-                Need senior technology help?
-              </h2>
-
-              <p className="mt-4 max-w-xl text-sm leading-7 text-gray-400 sm:text-base">
-                Tell us what you're trying to build or fix. A senior engineer
-                will reply within one business day.
-              </p>
-            </div>
-
-            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.03]"
-              >
-                Talk to an Engineer
-                <ArrowUpRight
-                  size={18}
-                  className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                />
-              </Link>
-
-              <Link
-                href="/case-studies"
-                className="group inline-flex items-center justify-center gap-3 rounded-full border border-white/20 px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:border-[#29B6F0] hover:text-[#29B6F0]"
-              >
-                See Case Studies
-                <ArrowRight
-                  size={17}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </Link>
-            </div>
-
-          </div>
-        </div>
-      </div>
+      {/* TOP GRADIENT LINE */}
+      <div className="h-[2px] w-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9]" />
 
       {/* MAIN FOOTER */}
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
 
         {/* BRAND + DESCRIPTION */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
 
-          <div>
-            <Link href="/" className="inline-flex items-center">
-              <span className="text-3xl font-bold tracking-tight">
-                Beaver<span className="text-[#29B6F0]">Tek</span>
-              </span>
+          <div data-aos="fade-up" data-aos-duration="900">
+
+            {/* LOGO */}
+            <Link
+              href="/"
+              aria-label="BeaverTek Home"
+              className="inline-flex items-center transition-opacity duration-300 hover:opacity-80"
+            >
+              <Image
+                src="/home/logoheader1.png"
+                alt="BeaverTek"
+                width={210}
+                height={65}
+                priority={false}
+                className="h-auto w-[175px] object-contain sm:w-[200px]"
+              />
             </Link>
 
             <p className="mt-6 max-w-md text-sm leading-7 text-gray-400 sm:text-base">
@@ -161,13 +160,13 @@ export default function Footer() {
             {/* LOCATIONS */}
             <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
 
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 text-[#29B6F0]">
+              <div className="group flex items-start gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#29B6F0]/10 bg-[#29B6F0]/[0.07] text-[#29B6F0] transition-all duration-300 group-hover:border-[#29B6F0]/40 group-hover:bg-[#29B6F0]/15">
                   <Building2 size={19} />
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-semibold text-white">
+                  <h4 className="text-sm font-semibold text-white transition-colors duration-300 group-hover:text-[#29B6F0]">
                     Irvine, California
                   </h4>
                   <p className="mt-1 text-xs text-gray-500">
@@ -176,13 +175,13 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 text-[#29B6F0]">
+              <div className="group flex items-start gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#7A4FD1]/10 bg-[#7A4FD1]/[0.07] text-[#B58AFF] transition-all duration-300 group-hover:border-[#7A4FD1]/40 group-hover:bg-[#7A4FD1]/15">
                   <Globe2 size={19} />
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-semibold text-white">
+                  <h4 className="text-sm font-semibold text-white transition-colors duration-300 group-hover:text-[#B58AFF]">
                     Chennai, India
                   </h4>
                   <p className="mt-1 text-xs text-gray-500">
@@ -195,7 +194,11 @@ export default function Footer() {
           </div>
 
           {/* COMPANY + RESOURCES */}
-          <div className="grid grid-cols-2 gap-8 sm:gap-12">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="150"
+            className="grid grid-cols-2 gap-8 sm:gap-12"
+          >
 
             <div>
               <h3 className="mb-6 text-sm font-semibold uppercase tracking-[0.15em] text-white">
@@ -207,7 +210,7 @@ export default function Footer() {
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="text-sm text-gray-400 transition-colors duration-300 hover:text-[#29B6F0]"
+                      className="group inline-flex items-center text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-[#29B6F0]"
                     >
                       {item.label}
                     </Link>
@@ -226,7 +229,7 @@ export default function Footer() {
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="text-sm text-gray-400 transition-colors duration-300 hover:text-[#29B6F0]"
+                      className="group inline-flex items-center text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-[#29B6F0]"
                     >
                       {item.label}
                     </Link>
@@ -239,32 +242,45 @@ export default function Footer() {
         </div>
 
         {/* SERVICES SECTION */}
-        <div className="mt-16 border-t border-white/10 pt-12">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="900"
+          className="mt-16 border-t border-white/10 pt-12 sm:mt-20"
+        >
 
           <div className="mb-9">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#29B6F0]">
               What We Do
             </p>
 
-            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            <h3 className="mt-3 max-w-3xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
               Technology services built around your business.
             </h3>
+
+            <div className="mt-4 h-[3px] w-20 rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9]" />
           </div>
 
           <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
 
-            {servicePillars.map((pillar) => (
-              <div key={pillar.title}>
+            {servicePillars.map((pillar, index) => (
+              <div
+                key={pillar.title}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="group"
+              >
                 <Link
                   href="/services"
-                  className="group inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-[#29B6F0]"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors duration-300 hover:text-[#29B6F0]"
                 >
                   {pillar.title}
                   <ArrowUpRight
                     size={14}
-                    className="opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
+                    className="transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
                   />
                 </Link>
+
+                <div className="mt-3 h-px w-10 bg-gradient-to-r from-[#29B6F0] to-[#7A4FD1] transition-all duration-500 group-hover:w-20" />
 
                 <ul className="mt-5 space-y-3">
                   {pillar.items.map((item) => (
@@ -283,18 +299,26 @@ export default function Footer() {
         </div>
 
         {/* CONTACT STRIP */}
-        <div className="mt-14 flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:flex-row sm:items-center sm:justify-between">
+        <div
+          data-aos="fade-up"
+          className="group relative mt-14 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-500 hover:border-[#29B6F0]/30 hover:bg-white/[0.05] sm:flex sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-8"
+        >
 
-          <div>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-20 -top-24 h-48 w-48 rounded-full bg-[#29B6F0]/10 blur-[80px] transition-all duration-500 group-hover:bg-[#7A4FD1]/15"
+          />
+
+          <div className="relative">
             <h4 className="text-base font-semibold text-white">
               Have a project in mind?
             </h4>
             <p className="mt-1 text-sm text-gray-500">
-              Let's discuss how we can help your business move forward.
+              Let&apos;s discuss how we can help your business move forward.
             </p>
           </div>
 
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+          <div className="relative mt-6 flex flex-col gap-5 sm:mt-0 sm:flex-row sm:items-center sm:gap-6">
 
             <a
               href="tel:+19498856193"
@@ -306,7 +330,7 @@ export default function Footer() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#29B6F0] transition-colors hover:text-white"
+              className="inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#29B6F0]/20"
             >
               Contact BeaverTek
               <ArrowUpRight size={16} />
@@ -316,7 +340,10 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM FOOTER */}
-        <div className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-7 md:flex-row md:items-center md:justify-between">
+        <div
+          data-aos="fade-up"
+          className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-7 md:flex-row md:items-center md:justify-between"
+        >
 
           <p className="text-xs text-gray-500">
             © {currentYear} BeaverTek. All rights reserved.
@@ -325,21 +352,21 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link
               href="/privacy"
-              className="text-xs text-gray-500 transition-colors hover:text-white"
+              className="text-xs text-gray-500 transition-colors duration-300 hover:text-[#29B6F0]"
             >
               Privacy Policy
             </Link>
 
             <Link
               href="/terms"
-              className="text-xs text-gray-500 transition-colors hover:text-white"
+              className="text-xs text-gray-500 transition-colors duration-300 hover:text-[#29B6F0]"
             >
               Terms of Service
             </Link>
 
             <Link
               href="/contact"
-              className="text-xs text-gray-500 transition-colors hover:text-white"
+              className="text-xs text-gray-500 transition-colors duration-300 hover:text-[#29B6F0]"
             >
               Contact
             </Link>
