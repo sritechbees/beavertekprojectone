@@ -91,19 +91,21 @@ export default function BuiltAround() {
     >
       <div className="container relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
 
-        {/* SECTION HEADING */}
-        <SectionHeading
-          eyebrow="Industries"
-          title={
-            <>
-              Built around{" "}
-              <span className="bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9] bg-clip-text text-transparent">
-                your world.
-              </span>
-            </>
-          }
-          description="Practical technology experience across the industries and teams we serve."
-        />
+       {/* SECTION HEADING */}
+<SectionHeading
+  eyebrow="Industries"
+  title={
+    <>
+  <span className="font-extrabold tracking-tight">
+    Built around{" "}
+  </span>
+  <span className="bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9] bg-clip-text font-black tracking-tight text-transparent">
+    your world.
+  </span>
+</>
+  }
+  description="Practical technology experience across the industries and teams we serve."
+/>
 
         {/* INDUSTRY CARDS */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

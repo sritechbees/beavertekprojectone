@@ -1,4 +1,4 @@
-import App_layout from "../layout/applayout";
+
 import BeaverHealthAI from "./BeaverHealthAI";
 import BigCompanyThinking from "./BigCompanyThinking";
 import OneTeam from "./OneTeam";
@@ -11,6 +11,8 @@ import GoodQuestions from "./GoodQuestions";
 import NeedSenior from "./NeedSenior";
 import SeniorEngineers from "./SeniorEngineers";
 
+
+import App_layout from "@/component/layout/app_layout";
 export default function Home() {
   return (
     <>
