@@ -98,12 +98,14 @@ export default function CaseStudies() {
         <SectionHeading
           eyebrow="Case studies"
           title={
-            <>
-              Work that moves{" "}
-              <span className="bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] bg-clip-text text-transparent">
-                things forward.
-              </span>
-            </>
+           <>
+  <span className="font-extrabold tracking-tight">
+    Work that moves{" "}
+  </span>
+  <span className="bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] bg-clip-text font-extrabold tracking-tight text-transparent">
+    things forward.
+  </span>
+</>
           }
           description="Real engineering challenges across payments, healthcare and data."
         />

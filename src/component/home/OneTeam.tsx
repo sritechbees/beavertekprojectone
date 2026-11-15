@@ -175,8 +175,10 @@ export default function OneTeam() {
           eyebrow="What we offer"
           title={
             <>
+            <span className="font-extrabold">
               One team for{" "}
-              <span className="bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9] bg-clip-text text-transparent">
+              </span>
+              <span className="bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9] font-extrabold bg-clip-text text-transparent">
                 what&apos;s next.
               </span>
             </>
