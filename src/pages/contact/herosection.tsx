@@ -63,7 +63,7 @@ export default function HeroSection() {
             bg-no-repeat
           "
           style={{
-            backgroundImage: "url('/contact/Contacthero.png')",
+            backgroundImage: "url('/contact/contacthero.png')",
           }}
         />
 

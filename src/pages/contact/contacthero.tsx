@@ -88,7 +88,7 @@ export default function ContactHero() {
               bg-no-repeat
             "
             style={{
-              backgroundImage: "url('/contact/Contacthero1.png')",
+              backgroundImage: "url('/contact/contacthero1.png')",
             }}
           />
 
