@@ -33,7 +33,7 @@ export default function ProductsCta() {
           >
             Visit BeaverHealthAI
             <span className="ml-2" aria-hidden="true">
-              &nearr;
+              ↗
             </span>
           </a>
           <a

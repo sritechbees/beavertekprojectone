@@ -5,31 +5,51 @@ export default function ProductPlatform() {
       className="scroll-mt-8 bg-white px-6 py-20 sm:py-28 lg:px-8"
       aria-labelledby="platform-title"
     >
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
-        <div>
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
+        <div className="max-w-md">
           <p className="text-xs font-bold tracking-[0.2em] text-[#6b91ad] uppercase">
-            BeaverHealthAI
+            Built by BeaverTek
           </p>
           <h2
             id="platform-title"
-            className="mt-4 max-w-sm text-3xl leading-tight font-semibold tracking-[-0.04em] text-[#161e2f] sm:text-4xl"
+            className="mt-4 text-3xl leading-tight font-semibold tracking-[-0.05em] text-[#161e2f] sm:text-4xl"
           >
-            Connected healthcare applications.
+            One platform, built for the realities of care.
           </h2>
-        </div>
-        <div className="border-l-2 border-[#b7cad7] pl-6 sm:pl-9">
-          <p className="text-xl leading-9 text-[#344256]">
-            BeaverHealthAI is a healthcare technology platform combining
-            patient intake, AI triaging, remote monitoring, and predictive
-            analytics for hospitals, clinics, and public health programs.
-          </p>
-          <p className="mt-6 text-lg leading-8 text-[#5b6878]">
-            Its tools support patient intake and triage, extend care beyond
-            hospital walls, and provide predictive analytics for earlier
-            intervention. The platform is designed to integrate with existing
-            EMR and EHR systems.
+          <p className="mt-5 text-base leading-7 text-[#5b6878]">
+            BeaverHealthAI brings connected healthcare applications together
+            for organizations working to make patient care more accessible and
+            coordinated.
           </p>
         </div>
+        <dl className="divide-y divide-[#e7edf2] border-y border-[#e7edf2]">
+          <div className="grid gap-2 py-6 sm:grid-cols-[0.55fr_1.45fr] sm:gap-8">
+            <dt className="text-xs font-bold tracking-[0.16em] text-[#7893a5] uppercase">
+              Who it serves
+            </dt>
+            <dd className="text-lg leading-8 text-[#344256]">
+              Hospitals, clinics, and public health programs.
+            </dd>
+          </div>
+          <div className="grid gap-2 py-6 sm:grid-cols-[0.55fr_1.45fr] sm:gap-8">
+            <dt className="text-xs font-bold tracking-[0.16em] text-[#7893a5] uppercase">
+              What it brings together
+            </dt>
+            <dd className="text-lg leading-8 text-[#344256]">
+              Patient intake, AI-driven triage, remote monitoring, predictive
+              analytics, and preventive-care tools.
+            </dd>
+          </div>
+          <div className="grid gap-2 py-6 sm:grid-cols-[0.55fr_1.45fr] sm:gap-8">
+            <dt className="text-xs font-bold tracking-[0.16em] text-[#7893a5] uppercase">
+              Designed to connect
+            </dt>
+            <dd className="text-lg leading-8 text-[#344256]">
+              Existing electronic medical record (EMR) and electronic health
+              record (EHR) systems.
+            </dd>
+          </div>
+        </dl>
       </div>
     </section>
   );
