@@ -25,7 +25,7 @@ const navigationLinks = [
   { label: "Services", href: "/services/servicesherosection", section: null },
   { label: "Products", href: "/products/producthero", section: null },
   { label: "Industries", href: "/industry/industryhero", section: "null" },
-  { label: "Case Studies", href: "/#work", section: "work" },
+  { label: "Case Studies", href: "/casestudy/casestudyhero", section: null },
   { label: "Contact Us", href: "/contact/contacthero", section: null },
 ] as const;
 
