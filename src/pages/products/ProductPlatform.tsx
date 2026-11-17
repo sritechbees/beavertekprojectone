@@ -19,15 +19,15 @@ export default function ProductPlatform() {
         </div>
         <div className="border-l-2 border-[#b7cad7] pl-6 sm:pl-9">
           <p className="text-xl leading-9 text-[#344256]">
-            BeaverHealthAI is a healthcare technology platform for hospitals,
-            clinics, and public health programs. It brings patient intake,
-            AI-driven triaging, and preventive care tools together in a
-            connected suite of applications.
+            BeaverHealthAI is a healthcare technology platform combining
+            patient intake, AI triaging, remote monitoring, and predictive
+            analytics for hospitals, clinics, and public health programs.
           </p>
           <p className="mt-6 text-lg leading-8 text-[#5b6878]">
-            The platform grew from BeaverTek&apos;s healthcare application
-            engineering work, moving clinical ideas into software designed for
-            the people delivering care.
+            Its tools support patient intake and triage, extend care beyond
+            hospital walls, and provide predictive analytics for earlier
+            intervention. The platform is designed to integrate with existing
+            EMR and EHR systems.
           </p>
         </div>
       </div>

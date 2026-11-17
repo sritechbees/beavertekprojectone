@@ -1,21 +1,33 @@
 const capabilities = [
   {
     number: "01",
-    title: "Patient intake",
+    title: "Patient intake and triage",
     description:
-      "Digital intake applications designed to help care teams move beyond paper-based front-desk workflows.",
+      "Patient intake and triage tools designed to help reduce front-desk load.",
   },
   {
     number: "02",
-    title: "AI-driven triaging",
+    title: "Remote monitoring",
     description:
-      "Healthcare software that supports patient triaging as part of a connected clinical application suite.",
+      "Monitoring tools designed to extend care beyond hospital walls.",
   },
   {
     number: "03",
+    title: "Predictive analytics",
+    description:
+      "Analytics to support earlier intervention.",
+  },
+  {
+    number: "04",
     title: "Preventive care",
     description:
-      "Tools developed to support a more proactive approach to care and patient needs.",
+      "Preventive care tools developed as part of BeaverHealthAI's healthcare application suite.",
+  },
+  {
+    number: "05",
+    title: "EMR and EHR integration",
+    description:
+      "Designed to integrate with existing electronic medical and health record systems.",
   },
 ];
 
@@ -35,7 +47,7 @@ export default function ProductCapabilities() {
             id="capabilities-title"
             className="mt-4 text-3xl leading-tight font-semibold tracking-[-0.04em] text-[#161e2f] sm:text-5xl"
           >
-            Thoughtful tools for the care journey.
+            Tools across the care journey.
           </h2>
           <p className="mt-5 text-lg leading-8 text-[#5b6878]">
             BeaverHealthAI brings several parts of the patient experience into
@@ -43,7 +55,7 @@ export default function ProductCapabilities() {
           </p>
         </div>
 
-        <ol className="mt-12 grid gap-4 md:grid-cols-3">
+        <ol className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {capabilities.map((capability) => (
             <li
               key={capability.number}

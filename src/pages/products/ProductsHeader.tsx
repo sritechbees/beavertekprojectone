@@ -1,7 +1,6 @@
 const links = [
   { href: "#platform", label: "The platform" },
   { href: "#capabilities", label: "Capabilities" },
-  { href: "/about", label: "About BeaverTek" },
 ];
 
 export default function ProductsHeader() {
@@ -11,9 +10,9 @@ export default function ProductsHeader() {
         <a
           href="#top"
           className="w-fit text-xl font-bold tracking-[-0.06em] text-[#161e2f]"
-          aria-label="BeaverTek products"
+          aria-label="BeaverHealthAI products"
         >
-          Beaver<span className="text-[#6b91ad]">Tek</span>
+          Beaver<span className="text-[#6b91ad]">HealthAI</span>
         </a>
         <nav
           aria-label="Product page navigation"

@@ -8,7 +8,7 @@ export default function ProductsHero() {
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-8 lg:py-32">
         <div>
           <p className="mb-6 text-xs font-bold tracking-[0.2em] text-[#557993] uppercase">
-            Our products
+            BeaverHealthAI
           </p>
           <h1
             id="products-title"
@@ -17,9 +17,9 @@ export default function ProductsHero() {
             Healthcare technology, built from real clinical workflows.
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-[#455469]">
-            Beyond client work, BeaverTek builds and operates its own products.
-            BeaverHealthAI brings together healthcare applications for patient
-            intake, AI-driven triaging, and preventive care.
+            A healthcare technology platform combining patient intake,
+            AI-driven triaging, remote monitoring, and predictive analytics
+            for hospitals, clinics, and public health programs.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-5">
             <a
@@ -42,17 +42,15 @@ export default function ProductsHero() {
           <div className="relative overflow-hidden rounded-[2rem] bg-[#161e2f] p-8 text-white shadow-2xl shadow-[#23314f]/15 sm:p-10">
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold tracking-[0.18em] text-[#b8cbd8] uppercase">
-                A BeaverTek product
+                Healthcare AI platform
               </span>
               <span className="h-2.5 w-2.5 rounded-full bg-[#8fb0c6]" />
             </div>
             <p className="mt-14 text-sm font-medium tracking-[0.12em] text-[#b8cbd8] uppercase">
               Introducing
             </p>
-            <p className="mt-3 text-4xl leading-tight font-semibold tracking-[-0.05em] sm:text-5xl">
-              Beaver
-              <br />
-              Health<span className="text-[#8fb0c6]">AI</span>
+            <p className="mt-3 text-4xl leading-tight font-semibold tracking-[-0.06em] sm:text-[2.5rem]">
+              Beaver<span className="text-[#8fb0c6]">HealthAI</span>
             </p>
             <p className="mt-5 max-w-xs leading-7 text-[#d0dbe3]">
               A connected suite of healthcare applications shaped around the
@@ -60,7 +58,7 @@ export default function ProductsHero() {
             </p>
             <div className="mt-10 flex items-center gap-3 text-sm text-[#c5d4de]">
               <span className="h-px w-10 bg-[#8fb0c6]" />
-              Built and operated by BeaverTek
+              Patient-focused healthcare technology
             </div>
             <div className="absolute -right-14 -bottom-16 h-40 w-40 rounded-full border-[24px] border-[#23314f]" />
           </div>
