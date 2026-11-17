@@ -23,7 +23,7 @@ const navigationLinks = [
   { label: "Home", href: "/#top", section: "top" },
   { label: "About Us", href: "/about/abouthero", section: null },
   { label: "Services", href: "/services/servicesherosection", section: null },
-  { label: "Products", href: "/#products", section: "products" },
+  { label: "Products", href: "/products/producthero", section: "null" },
   { label: "Industries", href: "/industry/industryhero", section: "null" },
   { label: "Case Studies", href: "/#work", section: "work" },
   { label: "Contact Us", href: "/contact/contacthero", section: null },
