@@ -12,6 +12,7 @@ import ServicesHub from "./serviceshub";
 import Buildtogether from "./buildtogether";
 import Howwework from "./howwework";
 import App_layout from "@/component/layout/app_layout";
+import Head from "next/head";
 
 const beaverTekGradient =
   "linear-gradient(135deg,#29B6F0 0%,#3E7BD6 35%,#7A4FD1 65%,#B93FC9 100%)";
@@ -82,6 +83,9 @@ export default function ServicesHerosection() {
 
   return (
   <App_layout>
+    <Head>
+      <title>Beavertek | Services</title>
+      </Head>
       {/* =====================================================
           HERO SECTION
       ====================================================== */}

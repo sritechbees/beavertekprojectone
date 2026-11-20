@@ -142,7 +142,7 @@ function Overviewsection() {
                 {/* Image */}
 
                 <img
-                  src="/services/Cloud Cost Optimization.jpg"
+                  src="/services/Data Integration.jpg"
                   alt="Cloud Cost Optimization"
                   className="
                     h-[220px]

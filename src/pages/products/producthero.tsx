@@ -9,7 +9,8 @@ import ProductPlatform from "./ProductPlatform";
 import Productcard from "./productcard";
 import Productsoftware from "./Productsoftware";
 import Productcontent from "./productcontent";
-import FooterCTA from "@/component/home/footercta";
+
+import Head from "next/head";
 
 function ArrowIcon() {
   return (
@@ -95,7 +96,7 @@ function ProductCard({
       </div>
 
       <Link
-        href="/contact"
+        href="/contact/contacthero"
         className="group/link relative mt-6 inline-flex w-fit items-center gap-3 text-sm font-semibold text-[#29B6F0] transition-colors hover:text-white sm:mt-7"
       >
         {linkLabel}
@@ -112,6 +113,9 @@ function ProductCard({
 export default function ProductsSection() {
   return (
     <App_layout>
+      <Head>
+      <title>Beavertek | Product</title>
+      </Head>
       <section
         id="products"
         className="relative product-text details  isolate overflow-hidden bg-[#05070D] text-white"
@@ -128,12 +132,12 @@ export default function ProductsSection() {
           <div className="absolute inset-y-0 right-0 hidden w-[52%] lg:block">
             <div className="absolute inset-0 overflow-hidden">
               <Image
-                src="/home/About.jpg"
+                src="/product/Product Banner.png"
                 alt="BeaverHealthAI healthcare technology solutions"
                 fill
                 priority
                 sizes="52vw"
-                className="object-cover object-center"
+                className="object-cover object-right"
               />
             </div>
 
@@ -241,7 +245,7 @@ export default function ProductsSection() {
       <Productcard />
       <ProductPlatform />
       <Productcontent/>
-      <FooterCTA/>
+     
     </App_layout>
   );
 }

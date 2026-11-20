@@ -129,7 +129,7 @@ export default function CaseStudiesHero() {
       </div>
 
       {/* CENTERED HERO CONTENT */}
-      <div className="relative z-10 mx-auto flex min-h-[430px] w-full max-w-7xl items-center justify-center px-5 pb-12 pt-20 text-center sm:min-h-[460px] sm:px-8 sm:pb-14 sm:pt-24 lg:min-h-[490px] lg:px-10 lg:pb-16 lg:pt-28 xl:min-h-[510px]">
+      <div className="relative z-10 mx-auto flex min-h-[430px] w-full max-w-7xl items-center justify-center px-5 pb-12 pt-20 text-center sm:min-h-[460px] sm:px-8 sm:pb-14 max-sm:mt-12 sm:pt-24 lg:min-h-[490px] lg:px-10 lg:pb-16 lg:pt-28 xl:min-h-[510px]">
         <div className="flex w-full max-w-3xl flex-col items-center">
 
           {/* EYEBROW */}

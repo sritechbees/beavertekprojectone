@@ -42,7 +42,7 @@ function Whatwedeliver() {
       description:
         "Ensure your cloud resources match real-time demand. We adjust compute, storage, and network configurations to eliminate over-provisioning while maintaining peak performance.",
       gradient: "from-[#3E7BD6] to-[#7A4FD1]",
-      image: "/services/Resource Rightsizing.jpg",
+      image: "/services/How We Work.jpg",
       icon: Scale,
       direction: "top",
     },
@@ -51,7 +51,7 @@ function Whatwedeliver() {
       description:
         "Stay ahead of unexpected costs with proactive monitoring, alerts, and monthly spend governance. We help you track budgets, forecast usage, and prevent cost overruns.",
       gradient: "from-[#7A4FD1] to-[#B93FC9]",
-      image: "/services/Budget Monitoring.jpg",
+      image: "/services/data that.jpg",
       icon: BellRing,
       direction: "right",
     },
@@ -60,7 +60,7 @@ function Whatwedeliver() {
       description:
         "Optimize instance selection across compute families, storage tiers, and pricing models (on-demand, reserved, spot). We ensure you always run the most cost-efficient configuration for your workloads.",
       gradient: "from-[#B93FC9] to-[#29B6F0]",
-      image: "/services/Instance Planning.jpg",
+      image: "/services/BI Dashboard Development.png",
       icon: ServerCog,
       direction: "bottom",
     },

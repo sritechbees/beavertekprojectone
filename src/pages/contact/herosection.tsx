@@ -7,6 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import App_layout from "@/component/layout/app_layout";
 import Contactformtalk from "./contactformtalk";
+import Head from "next/head";
 
 const GRADIENT =
   "linear-gradient(135deg,#29B6F0 0%,#3E7BD6 35%,#7A4FD1 65%,#B93FC9 100%)";
@@ -31,6 +32,9 @@ export default function HeroSection() {
 
   return (
     <App_layout>
+       <Head>
+      <title>Beavertek | Let's Talk</title>
+      </Head>
       {/* =========================================================
           HERO SECTION
       ========================================================== */}

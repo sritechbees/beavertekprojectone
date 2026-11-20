@@ -32,7 +32,7 @@ const services: Service[] = [
   },
   {
     title: "Legacy modernization",
-    image: "/services/End-to-End Digital Transformation.jpg",
+    image: "/services/Budget Monitoring.jpg",
     description:
       "Modernize legacy applications and technologies to improve performance, scalability, security, and long-term value.",
     icon: RefreshCw,
@@ -46,7 +46,7 @@ const services: Service[] = [
   },
   {
     title: "Feature enhancements & upgrades",
-    image: "/services/End-to-End Digital Transformation.jpg",
+    image: "/services/Data Analytics.jpg",
     description:
       "Enhance existing applications with new features, upgrades, and improvements that support evolving business needs.",
     icon: Sparkles,
@@ -54,14 +54,14 @@ const services: Service[] = [
   {
     title:
       "Preventive and corrective maintenance with near-zero downtime",
-    image: "/services/software maintance.png",
+    image: "/services/dataanalytics.jpg",
     description:
       "Keep critical applications reliable with proactive maintenance, issue resolution, and continuous operational support.",
     icon: Wrench,
   },
   {
     title: "Performance monitoring & technical support",
-    image: "/services/Cloud Cost Analysis.jpg",
+    image: "/services/Custom Software.jpg",
     description:
       "Monitor application performance and provide technical support to maintain reliable, efficient, and responsive systems.",
     icon: Activity,

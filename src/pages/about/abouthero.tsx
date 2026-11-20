@@ -7,12 +7,16 @@ import WhereWeAre from "./WhereWeAre";
 import WhyWeExist from "./WhyWeExist";
 
 
-import FooterCTA from "@/component/home/footercta";
+
 import Beavertekhero from "./beavertekhero";
+import Head from "next/head";
 
 export default function AboutHero() {
   return (
     <App_layout>
+      <Head>
+      <title>Beavertek | About</title>
+      </Head>
     <div>
     <Beavertekhero/>
      
@@ -22,7 +26,7 @@ export default function AboutHero() {
     <WhatWeBelieve/>
     <WhereWeAre/>
     <WhyWeExist/>
-    <FooterCTA/>
+    
     </div>
     </App_layout>
   );

@@ -77,7 +77,7 @@ function Herosection() {
           HERO SECTION
       ====================================================== */}
 
-      <section className="relative overflow-hidden bg-black">
+      <section className="relative overflow-hidden bg-black mt-16">
         <div
           className="
             mx-auto

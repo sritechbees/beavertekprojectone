@@ -1,379 +1,815 @@
-
 "use client";
 
 import { useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Phone,
-  Building2,
-  Globe2,
-} from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import FooterCTA from "../home/footercta";
+import Image from "next/image";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
-const servicePillars = [
-  {
-    title: "Automate with AI",
-    items: [
-      "AI Agents & Agentic Workflows",
-      "AI Copilots & LLM Integration",
-      "Business Process & CRM Automation",
-      "AI Readiness Assessment",
-    ],
-  },
-  {
-    title: "Build Software",
-    items: [
-      "Custom Software Development",
-      "Web & Mobile App Development",
-      "Healthcare Software Engineering",
-      "Payment & API Integrations",
-      "QA & Testing",
-    ],
-  },
-  {
-    title: "See Your Data",
-    items: [
-      "Data Analytics & BI Reporting",
-      "Data Engineering & Integration",
-      "Database Design & Administration",
-      "Predictive Analytics",
-    ],
-  },
-  {
-    title: "Modernize",
-    items: [
-      "Digital Transformation",
-      "Cloud Migration",
-      "Legacy Application Modernization",
-      "DevOps & CI/CD",
-      "Cloud Cost Optimization",
-    ],
-  },
-  {
-    title: "Stay Secure & Supported",
-    items: [
-      "Managed IT & Application Support",
-      "DevSecOps",
-      "Cloud & Infrastructure Security",
-      "Identity & Access Management",
-      "Backup & Disaster Recovery",
-    ],
-  },
-];
-
-const companyLinks = [
-  { label: "About BeaverTek", href: "/about" },
-  { label: "Industries", href: "/industries" },
-  { label: "Healthcare", href: "/industries/healthcare" },
-  { label: "Financial Services", href: "/industries/financial-services" },
-  { label: "Professional Services", href: "/industries/professional-services" },
-];
-
-const resourceLinks = [
-  { label: "BeaverHealthAI", href: "/products" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Insights", href: "/insights" },
-  { label: "Contact Us", href: "/contact" },
-];
+const gradient =
+  "linear-gradient(135deg,#29B6F0_0%,#3E7BD6_40%,#7A4FD1_75%,#B93FC9_100%)";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   useEffect(() => {
     AOS.init({
-      duration: 850,
+      duration: 900,
       once: true,
-      offset: 50,
+      offset: 70,
       easing: "ease-out-cubic",
-      mirror: false,
-      anchorPlacement: "top-bottom",
     });
 
     AOS.refresh();
-
-    return () => {
-      AOS.refreshHard();
-    };
   }, []);
 
+  const services = [
+    [
+      "End-to-End Digital Transformation",
+      "/services/digitaltransformation/herosection",
+    ],
+    ["Cloud Cost Optimization (FinOps)", "/services/finops/herosection"],
+    ["DevOps & DevSecOps", "/services/devops/herosection"],
+    [
+      "Mobile App Development",
+      "/services/mobileappdevelopment/herosection",
+    ],
+    [
+      "Custom Software Development & Maintenance",
+      "/services/customsoftware/herosection",
+    ],
+    [
+      "Data Analytics and Reporting",
+      "/services/dataanalytics/herosection",
+    ],
+  ];
+
+  const quickLinks = [
+    ["Home", "/"],
+    ["About", "/about/abouthero"],
+    ["Services", "/services/servicesherosection"],
+     ["Products", "/products/producthero"],
+    ["Case Studies", "/casestudy/casestudyhero"],
+    ["Industries","/industry/industryhero"],
+    ["Contact", "/contact/contacthero"],
+  ];
+
   return (
-    <footer className="relative isolate overflow-hidden bg-[#050507] text-white">
+    <footer className="relative overflow-hidden bg-[#000000] text-white">
+      {/* =====================================================
+          FOOTER CTA
+      ====================================================== */}
+      <FooterCTA />
 
-      {/* BACKGROUND EFFECTS */}
+      {/* =====================================================
+          BACKGROUND GLOWS
+      ====================================================== */}
+
       <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-40 top-0 -z-10 h-[450px] w-[450px] rounded-full bg-[#29B6F0]/[0.08] blur-[140px]"
+        className="
+          pointer-events-none
+          absolute
+          -left-40
+          top-20
+          h-96
+          w-96
+          rounded-full
+          bg-[#29B6F0]/10
+          blur-[150px]
+        "
       />
 
       <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 bottom-0 -z-10 h-[450px] w-[450px] rounded-full bg-[#7A4FD1]/[0.10] blur-[140px]"
+        className="
+          pointer-events-none
+          absolute
+          -right-40
+          bottom-20
+          h-96
+          w-96
+          rounded-full
+          bg-[#B93FC9]/10
+          blur-[150px]
+        "
       />
 
       <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[url('/tech-grid.svg')] opacity-[0.07]"
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-1/2
+          h-72
+          w-72
+          -translate-x-1/2
+          -translate-y-1/2
+          rounded-full
+          bg-[#7A4FD1]/5
+          blur-[140px]
+        "
       />
 
-      {/* TOP GRADIENT LINE */}
-      <div className="h-[2px] w-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9]" />
+      {/* =====================================================
+          MAIN FOOTER
+      ====================================================== */}
 
-      {/* MAIN FOOTER */}
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-7xl
+          px-5
+          py-14
+          sm:px-6
+          lg:px-8
+          lg:py-16
+        "
+      >
+        {/* =====================================================
+            MAIN GRID
+        ====================================================== */}
 
-        {/* BRAND + DESCRIPTION */}
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+          {/* =================================================
+              COMPANY
+          ================================================= */}
 
-          <div data-aos="fade-up" data-aos-duration="900">
-
-            {/* LOGO */}
-            <Link
-              href="/"
-              aria-label="BeaverTek Home"
-              className="inline-flex items-center transition-opacity duration-300 hover:opacity-80"
-            >
-              <Image
-                src="/home/logoheader1.png"
-                alt="BeaverTek"
-                width={210}
-                height={65}
-                priority={false}
-                className="h-auto w-[175px] object-contain sm:w-[200px]"
-              />
-            </Link>
-
-            <p className="mt-6 max-w-md text-sm leading-7 text-gray-400 sm:text-base">
-              BeaverTek is a technology partner for small and mid-size
-              businesses. We help growing companies build custom software,
-              put AI to work, understand their data and modernize their
-              technology.
-            </p>
-
-            <p className="mt-4 max-w-md text-sm leading-7 text-gray-500">
-              Senior engineering leadership in California, supported by
-              our engineering team in Chennai, India.
-            </p>
-
-            {/* LOCATIONS */}
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
-
-              <div className="group flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#29B6F0]/10 bg-[#29B6F0]/[0.07] text-[#29B6F0] transition-all duration-300 group-hover:border-[#29B6F0]/40 group-hover:bg-[#29B6F0]/15">
-                  <Building2 size={19} />
-                </div>
-
-                <div>
-                  <h4 className="text-sm font-semibold text-white transition-colors duration-300 group-hover:text-[#29B6F0]">
-                    Irvine, California
-                  </h4>
-                  <p className="mt-1 text-xs text-gray-500">
-                    United States · Headquarters
-                  </p>
-                </div>
-              </div>
-
-              <div className="group flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#7A4FD1]/10 bg-[#7A4FD1]/[0.07] text-[#B58AFF] transition-all duration-300 group-hover:border-[#7A4FD1]/40 group-hover:bg-[#7A4FD1]/15">
-                  <Globe2 size={19} />
-                </div>
-
-                <div>
-                  <h4 className="text-sm font-semibold text-white transition-colors duration-300 group-hover:text-[#B58AFF]">
-                    Chennai, India
-                  </h4>
-                  <p className="mt-1 text-xs text-gray-500">
-                    India · Engineering Hub
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          {/* COMPANY + RESOURCES */}
           <div
             data-aos="fade-up"
-            data-aos-delay="150"
-            className="grid grid-cols-2 gap-8 sm:gap-12"
+            className="group"
           >
+            {/* LOGO */}
 
-            <div>
-              <h3 className="mb-6 text-sm font-semibold uppercase tracking-[0.15em] text-white">
-                Company
-              </h3>
+            <div className="mb-5 inline-flex">
+              <div
+                className="
+                  relative
+                  overflow-hidden
+                  rounded-2xl
+                  transition-all
+                  duration-500
+                  group-hover:scale-[1.03]
+                "
+              >
+                {/* Logo Glow */}
 
-              <ul className="space-y-4">
-                {companyLinks.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="group inline-flex items-center text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-[#29B6F0]"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-0
+                    rounded-2xl
+                    opacity-0
+                    blur-xl
+                    transition-opacity
+                    duration-500
+                    group-hover:opacity-30
+                  "
+                  style={{
+                    background: gradient,
+                  }}
+                />
+
+                <Image
+                  src="/home/logoheader1.png"
+                  alt="BeaverTek"
+                  width={210}
+                  height={110}
+                  priority
+                  className="
+                    relative
+                    z-10
+                    h-auto
+                    w-[190px]
+                    object-contain
+                    transition-transform
+                    duration-700
+                    ease-out
+                    group-hover:scale-105
+                  "
+                />
+              </div>
             </div>
 
-            <div>
-              <h3 className="mb-6 text-sm font-semibold uppercase tracking-[0.15em] text-white">
-                Explore
-              </h3>
-
-              <ul className="space-y-4">
-                {resourceLinks.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="group inline-flex items-center text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-[#29B6F0]"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-          </div>
-        </div>
-
-        {/* SERVICES SECTION */}
-        <div
-          data-aos="fade-up"
-          data-aos-duration="900"
-          className="mt-16 border-t border-white/10 pt-12 sm:mt-20"
-        >
-
-          <div className="mb-9">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#29B6F0]">
-              What We Do
+            <p
+              className="
+                max-w-sm
+                text-sm
+                leading-7
+                text-[#A0A0A8]
+                transition-colors
+                duration-300
+                group-hover:text-[#C7C7CC]
+              "
+            >
+              A technology partner for small and mid-size businesses. We
+              modernize systems, build software, unlock data insights, and
+              keep digital operations secure.
             </p>
 
-            <h3 className="mt-3 max-w-3xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              Technology services built around your business.
-            </h3>
+            {/* MINI INDICATORS */}
 
-            <div className="mt-4 h-[3px] w-20 rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9]" />
+            <div className="mt-6 flex items-center gap-2">
+              <span
+                className="
+                  h-2.5
+                  w-2.5
+                  rounded-full
+                  bg-[#29B6F0]
+                  transition-all
+                  duration-300
+                  group-hover:scale-125
+                  group-hover:shadow-[0_0_14px_#29B6F0]
+                "
+              />
+
+              <span
+                className="
+                  h-2.5
+                  w-2.5
+                  rounded-full
+                  bg-[#3E7BD6]
+                  transition-all
+                  delay-75
+                  duration-300
+                  group-hover:scale-125
+                  group-hover:shadow-[0_0_14px_#3E7BD6]
+                "
+              />
+
+              <span
+                className="
+                  h-2.5
+                  w-2.5
+                  rounded-full
+                  bg-[#B93FC9]
+                  transition-all
+                  delay-150
+                  duration-300
+                  group-hover:scale-125
+                  group-hover:shadow-[0_0_14px_#B93FC9]
+                "
+              />
+            </div>
+
+{/* SOCIAL MEDIA LINKS */}
+<div className="mt-6">
+  <p className="mb-3 text-sm font-medium text-[#A0A0A8]">
+    Follow Us
+  </p>
+
+  <div className="flex items-center gap-3">
+    <Link
+      href="https://www.facebook.com/beavertekinc"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Facebook"
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#2A2A30] bg-[#121212] text-[#A0A0A8] transition-all duration-300 hover:-translate-y-1 hover:border-[#3E7BD6] hover:bg-[#3E7BD6]/10 hover:text-[#29B6F0]"
+    >
+      <FaFacebookF size={16} />
+    </Link>
+
+    <Link
+      href="https://twitter.com/beavertekinc"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Twitter"
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#2A2A30] bg-[#121212] text-[#A0A0A8] transition-all duration-300 hover:-translate-y-1 hover:border-[#3E7BD6] hover:bg-[#3E7BD6]/10 hover:text-[#29B6F0]"
+    >
+      <FaTwitter size={16} />
+    </Link>
+
+    <Link
+      href="https://www.instagram.com/beavertekinc"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#2A2A30] bg-[#121212] text-[#A0A0A8] transition-all duration-300 hover:-translate-y-1 hover:border-[#7A4FD1] hover:bg-[#7A4FD1]/10 hover:text-[#B93FC9]"
+    >
+      <FaInstagram size={17} />
+    </Link>
+
+    <Link
+      href="https://www.linkedin.com/company/beavertek"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="LinkedIn"
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#2A2A30] bg-[#121212] text-[#A0A0A8] transition-all duration-300 hover:-translate-y-1 hover:border-[#3E7BD6] hover:bg-[#3E7BD6]/10 hover:text-[#29B6F0]"
+    >
+      <FaLinkedinIn size={16} />
+    </Link>
+  </div>
+</div>
+
+
           </div>
 
-          <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-
-            {servicePillars.map((pillar, index) => (
-              <div
-                key={pillar.title}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-                className="group"
-              >
-                <Link
-                  href="/services"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors duration-300 hover:text-[#29B6F0]"
-                >
-                  {pillar.title}
-                  <ArrowUpRight
-                    size={14}
-                    className="transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                  />
-                </Link>
-
-                <div className="mt-3 h-px w-10 bg-gradient-to-r from-[#29B6F0] to-[#7A4FD1] transition-all duration-500 group-hover:w-20" />
-
-                <ul className="mt-5 space-y-3">
-                  {pillar.items.map((item) => (
-                    <li
-                      key={item}
-                      className="text-xs leading-6 text-gray-500 transition-colors duration-300 hover:text-gray-300"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-
-          </div>
-        </div>
-
-        {/* CONTACT STRIP */}
-        <div
-          data-aos="fade-up"
-          className="group relative mt-14 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-500 hover:border-[#29B6F0]/30 hover:bg-white/[0.05] sm:flex sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-8"
-        >
+          {/* =================================================
+              QUICK LINKS
+          ================================================= */}
 
           <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-20 -top-24 h-48 w-48 rounded-full bg-[#29B6F0]/10 blur-[80px] transition-all duration-500 group-hover:bg-[#7A4FD1]/15"
-          />
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <h3
+              className="
+                mb-6
+                text-lg
+                font-semibold
+                bg-gradient-to-r
+                from-[#29B6F0]
+                via-[#7A4FD1]
+                to-[#B93FC9]
+                bg-clip-text
+                text-transparent
+              "
+            >
+              Quick Links
+            </h3>
 
-          <div className="relative">
-            <h4 className="text-base font-semibold text-white">
-              Have a project in mind?
-            </h4>
-            <p className="mt-1 text-sm text-gray-500">
-              Let&apos;s discuss how we can help your business move forward.
-            </p>
+            <ul className="space-y-2">
+              {quickLinks.map(([name, href], index) => (
+                <li key={name}>
+                  <Link
+                    href={href}
+                    className="
+                      group/link
+                      relative
+                      flex
+                      w-fit
+                      items-center
+                      gap-2
+                      py-1.5
+                      text-sm
+                      text-[#A0A0A8]
+                      transition-all
+                      duration-300
+                      hover:translate-x-2
+                      hover:text-white
+                    "
+                  >
+                    {/* Animated Line */}
+
+                    <span
+                      className="
+                        absolute
+                        -left-3
+                        h-px
+                        w-0
+                        bg-gradient-to-r
+                        from-[#29B6F0]
+                        to-[#B93FC9]
+                        transition-all
+                        duration-300
+                        group-hover/link:w-2
+                      "
+                    />
+
+                    <span>{name}</span>
+
+                    {/* Arrow */}
+
+                    <span
+                      className="
+                        translate-x-[-4px]
+                        opacity-0
+                        transition-all
+                        duration-300
+                        group-hover/link:translate-x-0
+                        group-hover/link:opacity-100
+                      "
+                    >
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="relative mt-6 flex flex-col gap-5 sm:mt-0 sm:flex-row sm:items-center sm:gap-6">
+          {/* =================================================
+              SERVICES - NEW 6 SERVICES
+          ================================================= */}
 
-            <a
-              href="tel:+19498856193"
-              className="inline-flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-[#29B6F0]"
+          <div
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h3
+              className="
+                mb-6
+                text-lg
+                font-semibold
+                bg-gradient-to-r
+                from-[#29B6F0]
+                via-[#7A4FD1]
+                to-[#B93FC9]
+                bg-clip-text
+                text-transparent
+              "
             >
-              <Phone size={16} className="text-[#29B6F0]" />
-              +1 (949) 885-6193
-            </a>
+              Services
+            </h3>
 
-            <Link
-              href="/contact"
-              className="inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#29B6F0]/20"
+            <ul className="space-y-1.5">
+              {services.map(([name, href], index) => (
+                <li key={name}>
+                  <Link
+                    href={href}
+                    className="
+                      group/service
+                      relative
+                      flex
+                      items-center
+                      gap-2
+                      overflow-hidden
+                      rounded-lg
+                      px-3
+                      py-2
+                      text-sm
+                      text-[#A0A0A8]
+                      transition-all
+                      duration-300
+                      hover:translate-x-1
+                      hover:text-white
+                    "
+                  >
+                    {/* Sliding Gradient Background */}
+
+                    <span
+                      className="
+                        pointer-events-none
+                        absolute
+                        inset-0
+                        -translate-x-full
+                        bg-gradient-to-r
+                        from-[#29B6F0]/10
+                        via-[#7A4FD1]/10
+                        to-[#B93FC9]/10
+                        transition-transform
+                        duration-500
+                        group-hover/service:translate-x-0
+                      "
+                    />
+
+                    {/* Left Accent */}
+
+                    <span
+                      className="
+                        absolute
+                        left-0
+                        top-1/2
+                        h-0
+                        w-[2px]
+                        -translate-y-1/2
+                        rounded-full
+                        bg-gradient-to-b
+                        from-[#29B6F0]
+                        via-[#7A4FD1]
+                        to-[#B93FC9]
+                        transition-all
+                        duration-300
+                        group-hover/service:h-6
+                      "
+                    />
+
+
+                    {/* Service Name */}
+
+                    <span
+                      className="
+                        relative
+                        z-10
+                        flex-1
+                        leading-5
+                      "
+                    >
+                      {name}
+                    </span>
+
+                    {/* Arrow */}
+
+                    <span
+                      className="
+                        relative
+                        z-10
+                        -translate-x-2
+                        text-[#29B6F0]
+                        opacity-0
+                        transition-all
+                        duration-300
+                        group-hover/service:translate-x-0
+                        group-hover/service:opacity-100
+                      "
+                    >
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* =================================================
+              CONTACT
+          ================================================= */}
+
+          <div
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <h3
+              className="
+                mb-6
+                text-lg
+                font-semibold
+                bg-gradient-to-r
+                from-[#29B6F0]
+                via-[#7A4FD1]
+                to-[#B93FC9]
+                bg-clip-text
+                text-transparent
+              "
             >
-              Contact BeaverTek
-              <ArrowUpRight size={16} />
-            </Link>
+              Contact
+            </h3>
+
+            <div className="space-y-3">
+  {[
+    ["Email", "info@beavertek.com"],
+    ["USA", "Irvine, California", "+1 (949) 885-6193"],
+    ["India", "Tamil Nadu", "+91 99620 92583"],
+  ].map(([label, location, phone]) => (
+    <div
+      key={label}
+      className="
+        group/contact
+        rounded-lg
+        border
+        border-transparent
+        px-3
+        py-2
+        transition-all
+        duration-300
+        hover:border-[#2A2A30]
+        hover:bg-white/[0.025]
+        hover:translate-x-1
+      "
+    >
+      <p
+        className="
+          text-xs
+          font-medium
+          text-[#3E7BD6]
+          transition-colors
+          duration-300
+          group-hover/contact:text-[#29B6F0]
+        "
+      >
+        {label}
+      </p>
+
+      {label === "Email" ? (
+        <a
+          href="mailto:info@beavertek.com"
+          className="
+            mt-0.5
+            block
+            text-sm
+            text-[#A0A0A8]
+            transition-colors
+            duration-300
+            hover:text-white
+          "
+        >
+          {location}
+        </a>
+      ) : (
+        <>
+          <p
+            className="
+              mt-0.5
+              text-sm
+              text-[#A0A0A8]
+              transition-colors
+              duration-300
+              group-hover/contact:text-white
+            "
+          >
+            {location}
+          </p>
+
+          <a
+            href={`tel:${phone.replace(/[^+\d]/g, "")}`}
+            className="
+              mt-1
+              block
+              text-sm
+              text-[#A0A0A8]
+              transition-colors
+              duration-300
+              hover:text-[#29B6F0]
+            "
+          >
+            {phone}
+          </a>
+        </>
+      )}
+    </div>
+  ))}
+</div>
 
           </div>
         </div>
 
-        {/* BOTTOM FOOTER */}
+        {/* =====================================================
+            PREMIUM STRIP
+        ====================================================== */}
+
         <div
           data-aos="fade-up"
-          className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-7 md:flex-row md:items-center md:justify-between"
+          data-aos-delay="150"
+          className="
+            group/strip
+            relative
+            mt-12
+            overflow-hidden
+            rounded-[18px]
+            border
+            border-[#2A2A30]
+            bg-[#121212]
+            p-5
+            transition-all
+            duration-500
+            hover:border-[#3E7BD6]/50
+            hover:bg-[#151515]
+          "
         >
+          {/* Gradient Sweep */}
 
-          <p className="text-xs text-gray-500">
-            © {currentYear} BeaverTek. All rights reserved.
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-y-0
+              -left-[30%]
+              w-[40%]
+              skew-x-[-20deg]
+              bg-gradient-to-r
+              from-transparent
+              via-white/[0.04]
+              to-transparent
+              transition-all
+              duration-1000
+              group-hover/strip:left-[110%]
+            "
+          />
+
+          <div
+            className="
+              relative
+              z-10
+              flex
+              flex-col
+              items-center
+              justify-between
+              gap-4
+              md:flex-row
+            "
+          >
+            <p
+              className="
+                text-center
+                text-sm
+                leading-6
+                text-[#A0A0A8]
+                transition-colors
+                duration-300
+                group-hover/strip:text-[#D4D4D8]
+                md:text-left
+              "
+            >
+              Building scalable digital systems with modern engineering &
+              AI-driven solutions.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                "Scalable Systems",
+                "AI Solutions",
+                "Cloud Native",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="
+                    group/tag
+                    cursor-default
+                    rounded-full
+                    border
+                    border-[#2A2A30]
+                    bg-[#000000]
+                    px-3.5
+                    py-1.5
+                    text-xs
+                    text-[#D4D4D8]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:border-[#3E7BD6]
+                    hover:text-white
+                    hover:shadow-[0_8px_25px_rgba(62,123,214,0.12)]
+                  "
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* =====================================================
+            BOTTOM BAR
+        ====================================================== */}
+
+        <div
+          className="
+            mt-8
+            flex
+            flex-col
+            items-center
+            justify-between
+            gap-4
+            border-t
+            border-[#2A2A30]
+            pt-7
+            md:flex-row
+          "
+        >
+          <p
+            className="
+              text-center
+              text-xs
+              text-[#7A7A7A]
+              transition-colors
+              duration-300
+              hover:text-[#A0A0A8]
+              md:text-left
+            "
+          >
+            © {new Date().getFullYear()} BeaverTek. All Rights Reserved.
           </p>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="flex flex-wrap justify-center gap-5 text-xs text-[#A0A0A8]">
             <Link
-              href="/privacy"
-              className="text-xs text-gray-500 transition-colors duration-300 hover:text-[#29B6F0]"
+              href="/contact/herosection"
+              className="
+                relative
+                transition-colors
+                duration-300
+                hover:text-[#29B6F0]
+                after:absolute
+                after:-bottom-1
+                after:left-0
+                after:h-px
+                after:w-0
+                after:bg-[#29B6F0]
+                after:transition-all
+                after:duration-300
+                hover:after:w-full
+              "
             >
               Privacy Policy
             </Link>
 
             <Link
-              href="/terms"
-              className="text-xs text-gray-500 transition-colors duration-300 hover:text-[#29B6F0]"
+              href="/contact/herosection"
+              className="
+                relative
+                transition-colors
+                duration-300
+                hover:text-[#B93FC9]
+                after:absolute
+                after:-bottom-1
+                after:left-0
+                after:h-px
+                after:w-0
+                after:bg-[#B93FC9]
+                after:transition-all
+                after:duration-300
+                hover:after:w-full
+              "
             >
               Terms of Service
             </Link>
-
-            <Link
-              href="/contact"
-              className="text-xs text-gray-500 transition-colors duration-300 hover:text-[#29B6F0]"
-            >
-              Contact
-            </Link>
           </div>
-
         </div>
-
       </div>
     </footer>
   );

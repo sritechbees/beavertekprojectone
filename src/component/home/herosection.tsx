@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -123,7 +124,7 @@ function Herosection() {
         px-4 pb-10 pt-7
         sm:px-6 sm:pb-12 sm:pt-9
         lg:px-10 lg:pb-14 lg:pt-28
-        xl:px-16
+        xl:px-16 max-sm:mt-22
       "
       style={{ backgroundImage: "url('/home/homebg.jpeg')" }}
     >
@@ -154,14 +155,10 @@ function Herosection() {
         />
       </div>
 
-      
-    
       {/* MAIN */}
       <div className="relative z-10 mx-auto w-full max-w-[1400px]">
-
         {/* HERO */}
         <div className="grid items-center gap-8 lg:grid-cols-[.88fr_1.12fr] lg:gap-10 xl:gap-12">
-
           {/* LEFT */}
           <div
             data-aos="fade-right"
@@ -185,72 +182,54 @@ function Herosection() {
               </span>
 
               <span className="text-[10px] font-semibold uppercase tracking-[.18em] text-[#D4D4D8] sm:text-[9px]">
-                
-IRVINE, CALIFORNIA/CHENNAI, INDIA
+                IRVINE, CALIFORNIA/CHENNAI, INDIA
               </span>
             </div>
 
             {/* TITLE */}
             <h1
-  data-aos="fade-up"
-  data-aos-delay="150"
-  data-aos-duration="850"
-  className="
-    text-[26px]
-    font-extrabold
-    leading-[1.12]
-    tracking-[-0.035em]
-    text-white
-    drop-shadow-[0_6px_25px_rgba(0,0,0,0.35)]
-    sm:text-[31px]
-    md:text-[36px]
-    lg:text-[39px]
-    xl:text-[44px]
-    2xl:text-[48px]
-  "
->
-  Senior engineers who build, modernize and
-  <br />
-  <span className="bg-[linear-gradient(135deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_65%,#B93FC9_100%)] bg-clip-text text-transparent">
-    run your technology.
-  </span>
-</h1>
+              data-aos="fade-up"
+              data-aos-delay="150"
+              data-aos-duration="850"
+              className="
+                text-[26px]
+                font-extrabold
+                leading-[1.12]
+                tracking-[-0.035em]
+                text-white
+                drop-shadow-[0_6px_25px_rgba(0,0,0,0.35)]
+                sm:text-[31px]
+                md:text-[36px]
+                lg:text-[39px]
+                xl:text-[44px]
+                2xl:text-[48px]
+              "
+            >
+              Senior engineers who build, modernize and
+              <br />
+              <span className="bg-[linear-gradient(135deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_65%,#B93FC9_100%)] bg-clip-text text-transparent">
+                run your technology.
+              </span>
+            </h1>
 
             {/* DESCRIPTION */}
-             <p
+            <p
               data-aos="fade-up"
               data-aos-duration="850"
               data-aos-delay="260"
               className="
-              z-10
-                mt-4
-                max-w-xl
-                text-sm
-                leading-6.5
-                text-[#D4D4D8]
-                transition-colors
-                duration-500
-
-          
-
-                sm:mt-5
-                sm:text-[15px]
-                sm:leading-7
-
-                md:text-base
-                md:leading-7
-
-                lg:text-[17px]
-                lg:leading-7.5
+                z-10 mt-4 max-w-xl text-sm leading-6.5 text-[#D4D4D8]
+                transition-colors duration-500
+                sm:mt-5 sm:text-[15px] sm:leading-7
+                md:text-base md:leading-7
+                lg:text-[17px] lg:leading-7.5
               "
             >
               Your trusted partner in IT managed services and innovative
-            technology solutions. BeaverTek helps growing companies ship
-            custom software, put AI to work, see their data clearly and
-            stay secure led from California, engineered by our team in India.
+              technology solutions. BeaverTek helps growing companies ship
+              custom software, put AI to work, see their data clearly and
+              stay secure led from California, engineered by our team in India.
             </p>
-
-
           </div>
 
           {/* RIGHT */}
@@ -396,7 +375,6 @@ IRVINE, CALIFORNIA/CHENNAI, INDIA
 
             <span className="pointer-events-none absolute bottom-[3%] right-[15%] h-1 w-1 rounded-full bg-[#7A4FD1] shadow-[0_0_12px_#7A4FD1]" />
           </div>
-          
         </div>
 
         {/* SELECTED WORK */}
@@ -408,7 +386,7 @@ IRVINE, CALIFORNIA/CHENNAI, INDIA
           {/* HEADER */}
           <div className="mb-3.5 flex items-end justify-between gap-4">
             <div data-aos="fade-right" data-aos-delay="250">
-              <p className="text-[8px] py-2 font-semibold uppercase tracking-[.2em] text-[#29B6F0] sm:text-[9px]">
+              <p className="py-2 text-[8px] font-semibold uppercase tracking-[.2em] text-[#29B6F0] sm:text-[9px]">
                 Selected Work
               </p>
 
@@ -661,7 +639,6 @@ function StatCard({
 
       {/* CONTENT */}
       <div className="relative z-10 flex h-full min-h-[120px] flex-col items-center justify-center text-center sm:min-h-[135px]">
-
         {/* ICON */}
         <div
           className="
@@ -685,7 +662,7 @@ function StatCard({
               sm:text-[32px] md:text-[34px] lg:text-[35px]
             "
           >
-            {count}+
+            {number.includes("+") ? `${count}+` : count}
           </span>
         </div>
 

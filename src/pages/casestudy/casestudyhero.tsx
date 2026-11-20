@@ -3,20 +3,23 @@ import CaseStudiesHero from "./CaseStudiesHero";
 import PaymentPlatformCaseStudy from "./PaymentPlatformCaseStudy";
 import HealthcareAiCaseStudy from "./HealthcareAiCaseStudy";
 import DataReportingCaseStudy from "./DataReportingCaseStudy";
-import FooterCTA from "@/component/home/footercta";
+
+import Head from "next/head";
 
 
 export default function CaseStudiesSection() {
   return (
     <App_layout>
-   
+   <Head>
+      <title>Beavertek |  Case Studies</title>
+      </Head>
    
     <CaseStudiesHero/>
     
     <PaymentPlatformCaseStudy/>
     <HealthcareAiCaseStudy/>
     <DataReportingCaseStudy/>
-   <FooterCTA/>
+  
    
 
     </App_layout>

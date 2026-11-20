@@ -22,7 +22,7 @@ function Herosection() {
   return (
     <App_layout>
       {/* ================= HERO SECTION ================= */}
-      <section className="relative overflow-hidden bg-[#000000]">
+      <section className="relative overflow-hidden bg-[#000000] mt-16">
         <div
           className="
             mx-auto

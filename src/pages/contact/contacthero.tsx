@@ -8,6 +8,7 @@ import "aos/dist/aos.css";
 
 import Contactform from "./contactform";
 import FAQSection from "./faqsection";
+import Head from "next/head";
 
 export default function ContactHero() {
   /* =========================================================
@@ -33,7 +34,9 @@ export default function ContactHero() {
 
   return (
     <App_layout>
-      
+       <Head>
+      <title>Beavertek |  Contact</title>
+      </Head>
       {/* =========================================================
           CONTACT HERO
       ========================================================= */}
