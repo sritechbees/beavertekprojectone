@@ -18,18 +18,18 @@ function Eyebrow({
 }) {
   return (
     <span
-      className={`mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] ${
+      className={`mb-2 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] sm:text-xs ${
         light ? "text-[#29B6F0]" : "text-[#3E7BD6]"
       }`}
     >
-      <span className="h-2 w-2 rounded-full bg-[#29B6F0]" />
+      <span className="h-1.5 w-1.5 rounded-full bg-[#29B6F0]" />
       {children}
     </span>
   );
 }
 
 // =========================================
-// PRIMARY BUTTON COMPONENT
+// PRIMARY BUTTON
 // =========================================
 
 function PrimaryButton({
@@ -42,14 +42,117 @@ function PrimaryButton({
   return (
     <Link
       href={href}
-      className="group inline-flex items-center justify-center gap-3 rounded-full bg-brand-gradient px-7 py-4 text-sm font-bold text-white shadow-lg shadow-[#3E7BD6]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#7A4FD1]/30"
+      className="group inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(110deg,#29B6F0_0%,#3E7BD6_40%,#7A4FD1_75%,#B93FC9_100%)] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-[#3E7BD6]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#7A4FD1]/30 sm:px-6 sm:py-3 sm:text-sm"
     >
       {children}
+
       <ArrowUpRight
-        size={18}
+        size={16}
         className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
       />
     </Link>
+  );
+}
+
+// =========================================
+// PRODUCT CARD
+// =========================================
+
+function ProductCard({
+  label,
+  title,
+  description,
+  linkText,
+  icon,
+  iconText,
+  accent,
+  glow,
+  reverse = false,
+}: {
+  label: string;
+  title: string;
+  description: string;
+  linkText: string;
+  icon: ReactNode;
+  iconText: string;
+  accent: string;
+  glow: string;
+  reverse?: boolean;
+}) {
+  return (
+    <article
+      className={`group relative isolate flex min-h-[260px] flex-col overflow-hidden rounded-[20px] border border-[#DCE5F0] bg-white p-5 shadow-[0_12px_35px_rgba(41,65,100,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[#29B6F0]/50 hover:shadow-[0_20px_40px_rgba(62,123,214,0.13)] sm:min-h-[275px] sm:p-6 lg:p-7 ${
+        reverse ? "lg:mt-5" : ""
+      }`}
+    >
+      {/* BEAVERTEK GRADIENT OVERLAY */}
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(135deg,rgba(41,182,240,0.10)_0%,rgba(62,123,214,0.07)_35%,rgba(122,79,209,0.08)_70%,rgba(185,63,201,0.10)_100%)] opacity-70 transition-opacity duration-500 group-hover:opacity-100"
+      />
+
+      {/* CYAN GLOW */}
+
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute -right-20 -top-20 -z-10 h-48 w-48 rounded-full ${glow} opacity-40 blur-[85px] transition-all duration-700 group-hover:scale-125 group-hover:opacity-80`}
+      />
+
+      {/* VIOLET GLOW */}
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-24 -left-16 -z-10 h-44 w-44 rounded-full bg-[#7A4FD1]/10 opacity-50 blur-[80px] transition-opacity duration-500 group-hover:opacity-90"
+      />
+
+      {/* ICON */}
+
+      <div className="flex items-start">
+        <div
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-[15px] border border-white/60 bg-gradient-to-br ${accent} text-white shadow-md transition-transform duration-500 group-hover:scale-105`}
+        >
+          {icon}
+        </div>
+      </div>
+
+      {/* CONTENT */}
+
+      <div className="mt-5">
+        <p
+          className="text-[10px] font-bold uppercase tracking-[0.16em] sm:text-[11px]"
+          style={{ color: iconText }}
+        >
+          {label}
+        </p>
+
+        <h3 className="mt-2 text-[21px] font-extrabold leading-tight tracking-tight text-[#101828] transition-colors duration-300 group-hover:text-[#3E7BD6] sm:text-[25px]">
+          {title}
+        </h3>
+
+        <p className="mt-2 max-w-lg text-[13px] leading-6 text-[#596579] sm:text-sm sm:leading-7">
+          {description}
+        </p>
+      </div>
+
+      {/* LINK */}
+
+      <Link
+        href="/contact"
+        className="group/link mt-auto inline-flex w-fit items-center gap-2 pt-5 text-xs font-bold text-[#3E7BD6] transition-colors duration-300 hover:text-[#B93FC9] sm:text-sm"
+      >
+        {linkText}
+
+        <ArrowUpRight
+          size={16}
+          className="transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
+        />
+      </Link>
+
+      {/* BOTTOM GRADIENT */}
+
+      <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[linear-gradient(90deg,#29B6F0,#3E7BD6,#7A4FD1,#B93FC9)] transition-all duration-700 group-hover:w-full" />
+    </article>
   );
 }
 
@@ -61,220 +164,122 @@ export default function BeaverHealthAI() {
   return (
     <section
       id="products"
-      className="relative isolate overflow-hidden bg-brand-paper py-20 text-[#101828] sm:py-24 lg:py-28"
+      className="relative isolate overflow-hidden bg-[#F7F9FC] py-9 text-[#101828] sm:py-11 lg:py-13"
     >
-      {/* BACKGROUND GLOW EFFECTS */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-32 top-0 -z-10 h-[500px] w-[500px] animate-[floatGlow_10s_ease-in-out_infinite] rounded-full bg-[#29B6F0]/15 blur-[130px]"
-      />
+      {/* BACKGROUND */}
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-40 left-0 -z-10 h-[450px] w-[450px] animate-[floatGlow_12s_ease-in-out_infinite] rounded-full bg-[#7A4FD1]/15 blur-[130px]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F9FC_55%,#F2F5FA_100%)]"
       />
+
+      {/* CYAN GLOW */}
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-1/3 top-1/2 -z-10 h-72 w-72 rounded-full bg-[#B93FC9]/10 blur-[120px]"
+        className="pointer-events-none absolute -right-32 top-0 h-[300px] w-[300px] rounded-full bg-[#29B6F0]/10 blur-[110px]"
       />
 
-      <div className="container relative mx-auto max-w-7xl px-6 lg:px-10">
+      {/* VIOLET GLOW */}
 
-        {/* HEADER */}
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-end">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-32 -left-24 h-[320px] w-[320px] rounded-full bg-[#7A4FD1]/10 blur-[110px]"
+      />
 
-          <div className="animate-[fadeUp_0.9s_ease-out_both]">
+      {/* SUBTLE GRID */}
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.15] [background-image:linear-gradient(rgba(62,123,214,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(62,123,214,0.08)_1px,transparent_1px)] [background-size:75px_75px]"
+      />
+
+      <div className="container relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        {/* =====================================
+            HEADER
+        ===================================== */}
+
+        <div className="grid gap-4 sm:gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-8">
+
+          {/* TITLE */}
+
+          <div data-aos="fade-up">
             <Eyebrow light>Built by BeaverTek</Eyebrow>
 
-            <h2 className="text-5xl font-semibold tracking-tight text-[#101828] sm:text-6xl lg:text-7xl">
+            <h2 className="text-[32px] font-black leading-[1.08] tracking-[-0.045em] text-[#101828] sm:text-[42px] md:text-[48px] lg:text-[54px]">
               BeaverHealth
-              <span className="bg-brand-gradient bg-clip-text text-transparent">
+              <span className="bg-[linear-gradient(110deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_70%,#B93FC9_100%)] bg-clip-text text-transparent">
                 AI
               </span>
             </h2>
+
+            <div className="mt-3 h-1 w-14 rounded-full bg-[linear-gradient(90deg,#29B6F0,#3E7BD6,#7A4FD1,#B93FC9)]" />
           </div>
 
-          <div className="animate-[fadeUp_0.9s_ease-out_0.2s_both]">
-            <p className="max-w-xl text-lg leading-8 text-[#596579]">
+          {/* DESCRIPTION + CTA */}
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <p className="max-w-xl text-sm leading-6 text-[#596579] sm:text-base sm:leading-7">
               Healthcare AI products, built and operated by the team
               that engineers them.
             </p>
 
-            <div className="mt-7">
-              <PrimaryButton href="/contact">
-                Request a product demo
+            <div className="mt-4">
+              <PrimaryButton href="/products/product">
+                Product show
               </PrimaryButton>
             </div>
           </div>
         </div>
 
-        {/* PRODUCT CARDS */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
+        {/* =====================================
+            PRODUCT CARDS
+        ===================================== */}
+
+        <div className="mt-7 grid grid-cols-1 gap-4 sm:mt-8 sm:gap-5 md:grid-cols-2 lg:mt-9 lg:gap-5">
 
           {/* CARE360 AI */}
-          <article className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#121212] p-8 shadow-lg shadow-black/20 transition-all duration-500 hover:-translate-y-2 hover:border-[#29B6F0]/50 hover:shadow-xl hover:shadow-[#29B6F0]/10 sm:p-10">
 
-            {/* CARD GLOW */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#29B6F0]/10 blur-[80px] transition-all duration-700 group-hover:bg-[#29B6F0]/25"
+          <div data-aos="fade-up">
+            <ProductCard
+              label="Healthcare AI workspace"
+              title="Beaver Care360 AI"
+              description="A healthcare AI workspace designed to support smarter healthcare workflows."
+              linkText="Ask about Care360"
+              icon={
+                <span className="flex items-center gap-0.5 text-lg font-black">
+                  C<span className="text-[10px]">360</span>
+                </span>
+              }
+              iconText="#29B6F0"
+              accent="from-[#29B6F0] to-[#3E7BD6]"
+              glow="bg-[#29B6F0]/20"
             />
-
-            {/* ICON */}
-            <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-[#29B6F0] to-[#7A4FD1] text-2xl font-black text-white shadow-lg shadow-[#29B6F0]/20 transition-transform duration-500 group-hover:rotate-6 group-hover:scale-105">
-              C<span className="text-sm">360</span>
-            </div>
-
-            <p className="relative mt-12 text-xs font-bold uppercase tracking-widest text-[#29B6F0]">
-              Healthcare AI workspace
-            </p>
-
-            <h3 className="relative mt-3 text-3xl font-semibold text-white transition-colors duration-300 group-hover:text-[#29B6F0]">
-              Beaver Care360 AI
-            </h3>
-
-            <p className="relative mt-4 text-sm leading-7 text-[#A0A0A8]">
-              A healthcare AI workspace designed to support smarter
-              healthcare workflows.
-            </p>
-
-            <Link
-              href="/contact"
-              className="group/link relative mt-8 inline-flex items-center gap-2 text-sm font-bold text-white transition-colors duration-300 hover:text-[#29B6F0]"
-            >
-              Ask about Care360
-              <ArrowUpRight
-                size={18}
-                className="transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
-              />
-            </Link>
-          </article>
-
-          {/* INTAKE IQ */}
-          <article className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#121212] p-8 shadow-lg shadow-black/20 transition-all duration-500 hover:-translate-y-2 hover:border-[#B93FC9]/50 hover:shadow-xl hover:shadow-[#7A4FD1]/10 sm:p-10">
-
-            {/* CARD GLOW */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#7A4FD1]/10 blur-[80px] transition-all duration-700 group-hover:bg-[#B93FC9]/25"
-            />
-
-            {/* ICON */}
-            <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-[#3E7BD6] to-[#B93FC9] text-2xl font-black text-white shadow-lg shadow-[#7A4FD1]/20 transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-105">
-              IQ
-            </div>
-
-            <p className="relative mt-12 text-xs font-bold uppercase tracking-widest text-[#B93FC9]">
-              Patient intake module
-            </p>
-
-            <h3 className="relative mt-3 text-3xl font-semibold text-white transition-colors duration-300 group-hover:text-[#B93FC9]">
-              IntakeIQ
-            </h3>
-
-            <p className="relative mt-4 text-sm leading-7 text-[#A0A0A8]">
-              A focused patient intake solution for healthcare workflows.
-            </p>
-
-            <Link
-              href="/contact"
-              className="group/link relative mt-8 inline-flex items-center gap-2 text-sm font-bold text-white transition-colors duration-300 hover:text-[#B93FC9]"
-            >
-              Ask about IntakeIQ
-              <ArrowUpRight
-                size={18}
-                className="transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
-              />
-            </Link>
-          </article>
-        </div>
-
-        {/* BLAZEGUARD PRO FIREWALL */}
-        <div
-          id="blazeguard"
-          className="group relative mt-8 flex flex-col justify-between gap-8 overflow-hidden rounded-3xl border border-[#29B6F0]/20 bg-[#121212] p-8 shadow-xl shadow-black/20 transition-all duration-500 hover:border-[#7A4FD1]/50 sm:p-10 lg:flex-row lg:items-center"
-        >
-          {/* GRADIENT BACKGROUND */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#29B6F0]/10 via-[#3E7BD6]/5 to-[#B93FC9]/10 opacity-70 transition-opacity duration-500 group-hover:opacity-100"
-          />
-
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-20 -top-32 h-72 w-72 rounded-full bg-[#7A4FD1]/15 blur-[100px] transition-all duration-700 group-hover:bg-[#29B6F0]/20"
-          />
-
-          {/* FIREWALL CONTENT */}
-          <div className="relative max-w-2xl">
-
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#29B6F0]">
-              Also built by BeaverTek · Network security
-            </p>
-
-            <h3 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">
-              BlazeGuard Pro Firewall
-            </h3>
-
-            <p className="mt-3 font-medium text-[#29B6F0]">
-              Next-Gen Security for Modern Networks
-            </p>
-
-            <p className="mt-4 text-sm leading-7 text-[#D4D4D8]">
-              BlazeGuard Pro is our flagship enterprise-grade firewall
-              designed to protect digital infrastructure with AI-powered
-              threat detection, real-time analytics and cloud integration.
-            </p>
           </div>
 
-          {/* CTA */}
-          <Link
-            href="/contact"
-            className="group/button relative inline-flex shrink-0 items-center gap-3 rounded-full border border-white/25 px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#29B6F0] hover:bg-gradient-to-r hover:from-[#29B6F0] hover:to-[#7A4FD1] hover:shadow-lg hover:shadow-[#29B6F0]/20"
-          >
-            Enquire about BlazeGuard
+          {/* INTAKE IQ */}
 
-            <ArrowUpRight
-              size={18}
-              className="transition-transform duration-300 group-hover/button:translate-x-1 group-hover/button:-translate-y-1"
+          <div data-aos="fade-up" data-aos-delay="100">
+            <ProductCard
+              label="Patient intake module"
+              title="IntakeIQ"
+              description="A focused patient intake solution for healthcare workflows."
+              linkText="Ask about IntakeIQ"
+              icon={
+                <span className="text-xl font-black tracking-tight">
+                  IQ
+                </span>
+              }
+              iconText="#B93FC9"
+              accent="from-[#3E7BD6] to-[#B93FC9]"
+              glow="bg-[#7A4FD1]/25"
+              reverse
             />
-          </Link>
+          </div>
         </div>
+
       </div>
-
-      {/* ANIMATIONS */}
-      <style jsx>{`
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(25px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes floatGlow {
-          0%,
-          100% {
-            transform: translate3d(0, 0, 0);
-          }
-          50% {
-            transform: translate3d(-20px, 25px, 0);
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          section *,
-          section *::before,
-          section *::after {
-            animation: none !important;
-            transition: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

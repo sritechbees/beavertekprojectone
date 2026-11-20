@@ -14,6 +14,7 @@ import NeedSenior from "./NeedSenior";
 
 import App_layout from "@/component/layout/app_layout";
 import Herosection from "./herosection";
+import FooterCTA from "./footercta";
 export default function Home() {
   return (
     <>
@@ -50,7 +51,8 @@ export default function Home() {
           <GoodQuestions />
 
           {/* CONTACT CTA */}
-          <NeedSenior />
+        
+          <FooterCTA/>
         </main>
       </App_layout>
     </>
