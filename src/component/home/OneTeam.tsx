@@ -40,7 +40,7 @@ const pillars = [
       "Cloud cost optimization",
     ],
   },
-   {
+  {
     number: "03",
     title: "See Your Data",
     href: "/services/seeyourdata/seeyourdatahero",
@@ -53,7 +53,6 @@ const pillars = [
       "Predictive analytics",
     ],
   },
-  
   {
     number: "04",
     title: "Build Software",
@@ -68,7 +67,6 @@ const pillars = [
       "Payment & API integrations",
     ],
   },
- 
   {
     number: "05",
     title: "Stay Secure & Supported",
@@ -267,7 +265,9 @@ export default function OneTeam() {
                     aria-expanded={isOpen}
                     aria-controls={`service-content-${index}`}
                     onClick={() =>
-                      setActivePillar(isOpen ? null : index)
+                      setActivePillar((current) =>
+                        current === index ? null : index
+                      )
                     }
                     className="flex w-full cursor-pointer items-start gap-3 text-left sm:gap-4"
                   >
@@ -302,12 +302,11 @@ export default function OneTeam() {
 
                   {/* ACCORDION CONTENT */}
 
-                  <div
-                    id={`service-content-${index}`}
-                    hidden={!isOpen}
-                  >
-                    <div className="ml-6 mt-4 border-t border-[#2A2A30] pt-4 sm:ml-8 sm:mt-5 sm:pt-5">
-
+                  {isOpen && (
+                    <div
+                      id={`service-content-${index}`}
+                      className="ml-6 mt-4 border-t border-[#2A2A30] pt-4 sm:ml-8 sm:mt-5 sm:pt-5"
+                    >
                       {/* SERVICE LIST */}
 
                       <ul className="grid gap-x-4 gap-y-2.5 sm:grid-cols-2 sm:gap-y-3">
@@ -337,14 +336,12 @@ export default function OneTeam() {
                         />
                       </Link>
                     </div>
-                  </div>
+                  )}
                 </div>
               );
             })}
           </div>
         </div>
-
-
       </div>
     </section>
   );

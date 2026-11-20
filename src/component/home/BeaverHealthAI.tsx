@@ -138,7 +138,7 @@ function ProductCard({
       {/* LINK */}
 
       <Link
-        href="/contact"
+        href="/contact/contacthero"
         className="group/link mt-auto inline-flex w-fit items-center gap-2 pt-5 text-xs font-bold text-[#3E7BD6] transition-colors duration-300 hover:text-[#B93FC9] sm:text-sm"
       >
         {linkText}

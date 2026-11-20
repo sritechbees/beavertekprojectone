@@ -28,27 +28,27 @@ const projects = [
 
 const stats = [
   {
-    number: "10+",
-    title: "WEBSITE",
-    subtitle: "DEMOS",
+    number: "4.5M+",
+    title: "MONTHLY",
+    subtitle: "TRANSACTIONS",
     icon: "screen" as const,
   },
   {
     number: "80+",
-    title: "TOTAL INNER",
-    subtitle: "PAGES",
+    title: "YEARS OF COMBINED",
+    subtitle: "EXPERIENCE",
     icon: "file" as const,
   },
   {
-    number: "350+",
-    title: "TOTAL",
-    subtitle: "BLOCKS",
+    number: "150+",
+    title: "HAPPY",
+    subtitle: "CLIENTS",
     icon: "grid" as const,
   },
   {
-    number: "10+",
-    title: "MEGA MENU",
-    subtitle: "DESIGNS",
+    number: "2",
+    title: "GLOBAL",
+    subtitle: "LOCATIONS",
     icon: "menu" as const,
   },
 ];
@@ -396,6 +396,7 @@ IRVINE, CALIFORNIA/CHENNAI, INDIA
 
             <span className="pointer-events-none absolute bottom-[3%] right-[15%] h-1 w-1 rounded-full bg-[#7A4FD1] shadow-[0_0_12px_#7A4FD1]" />
           </div>
+          
         </div>
 
         {/* SELECTED WORK */}
