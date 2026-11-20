@@ -49,7 +49,7 @@ function PrimaryButton({ children, href }: {
   return (
     <Link
       href={href}
-      className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#3E7BD6]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#3E7BD6]/30"
+      className="group inline-flex items-center gap-3 rounded-full bg-brand-gradient px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#3E7BD6]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#3E7BD6]/30"
     >
       {children}
       <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
@@ -78,7 +78,7 @@ export default function GoodQuestions() {
   }, []);
 
   return (
-    <section className="bg-white py-28">
+    <section className="bg-brand-paper py-28">
       <div className="container mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.75fr_1.25fr] lg:px-10">
 
         {/* LEFT CONTENT */}
@@ -89,14 +89,14 @@ export default function GoodQuestions() {
         >
           <Eyebrow>Frequently asked questions</Eyebrow>
 
-          <h2 className="text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
+          <h2 className="text-4xl font-semibold leading-tight tracking-tight text-[#101828] sm:text-5xl">
             Good questions
-            <span className="block bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] bg-clip-text text-transparent">
+            <span className="block bg-brand-gradient bg-clip-text text-transparent">
               to start with.
             </span>
           </h2>
 
-          <p className="mt-6 max-w-sm leading-8 text-slate-500">
+          <p className="mt-6 max-w-sm leading-8 text-[#596579]">
             Have a technology challenge? Let&apos;s talk about the right solution.
           </p>
 
@@ -109,7 +109,7 @@ export default function GoodQuestions() {
 
         {/* FAQ ACCORDION */}
         <div
-          className="divide-y divide-slate-200 border-y border-slate-200"
+          className="divide-y divide-[#DDE3EA] border-y border-[#DDE3EA]"
           data-aos="fade-up"
           data-aos-duration="900"
         >
@@ -119,9 +119,9 @@ export default function GoodQuestions() {
               data-aos="fade-up"
               data-aos-duration="800"
               data-aos-delay={index * 100}
-              className="group rounded-xl py-6 transition-colors duration-300 open:bg-slate-50/80 sm:px-5"
+              className="group rounded-xl py-6 transition-colors duration-300 open:bg-[#EEF2F7] sm:px-5"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-base font-semibold text-slate-900 marker:content-none [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-base font-semibold text-[#101828] marker:content-none [&::-webkit-details-marker]:hidden">
                 {faq.question}
 
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#29B6F0]/20 bg-[#29B6F0]/10 text-xl text-[#3E7BD6] transition-all duration-300 group-hover:border-[#3E7BD6]/50 group-open:rotate-45 group-open:border-transparent group-open:bg-gradient-to-r group-open:from-[#29B6F0] group-open:to-[#7A4FD1] group-open:text-white">
@@ -129,7 +129,7 @@ export default function GoodQuestions() {
                 </span>
               </summary>
 
-              <p className="max-w-2xl pt-5 text-sm leading-8 text-slate-500">
+              <p className="max-w-2xl pt-5 text-sm leading-8 text-[#596579]">
                 {faq.answer}
               </p>
             </details>

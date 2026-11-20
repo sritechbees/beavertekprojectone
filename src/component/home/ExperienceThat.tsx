@@ -1,7 +1,16 @@
 
 "use client";
 
+import { useEffect } from "react";
 import type { ReactNode } from "react";
+import {
+  UsersRound,
+  Globe2,
+  PackageCheck,
+  ShieldCheck,
+} from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 /* =========================================
    REASONS DATA
@@ -12,172 +21,168 @@ const reasons = [
     title: "Senior people, start to finish.",
     description:
       "The engineers who scope your project are the ones who build it.",
+    icon: UsersRound,
   },
   {
     title: "US leadership, global engineering.",
     description:
       "Strategy and architecture in California; engineering execution in Chennai.",
+    icon: Globe2,
   },
   {
     title: "We run our own products.",
     description:
       "BeaverHealthAI is built and operated by our team. We know production, not just prototypes.",
+    icon: PackageCheck,
   },
   {
     title: "Built for regulated work.",
     description:
       "Healthcare and payments experience means security and compliance are designed in, not bolted on.",
+    icon: ShieldCheck,
   },
 ];
 
 /* =========================================
-   EYEBROW COMPONENT
+   EYEBROW
 ========================================= */
 
-function Eyebrow({
-  children,
-  light = false,
-}: {
-  children: ReactNode;
-  light?: boolean;
-}) {
+function Eyebrow({ children }: { children: ReactNode }) {
   return (
-    <span
-      className={`mb-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] ${
-        light ? "text-[#29B6F0]" : "text-[#3E7BD6]"
-      }`}
-    >
-      <span className="h-2 w-2 rounded-full bg-[#29B6F0]" />
-      {children}
-    </span>
+    <div className="mb-6 inline-flex items-center gap-3">
+      <span className="h-[2px] w-8 rounded-full bg-[#29B6F0]" />
+
+      <span className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#3E7BD6]">
+        {children}
+      </span>
+    </div>
   );
 }
 
 /* =========================================
-   EXPERIENCE THAT SECTION
+   EXPERIENCE THAT
 ========================================= */
 
 export default function ExperienceThat() {
+  useEffect(() => {
+    AOS.init({
+      duration: 850,
+      once: true,
+      offset: 60,
+      easing: "ease-out-cubic",
+      mirror: false,
+      anchorPlacement: "top-bottom",
+    });
+
+    AOS.refresh();
+
+    return () => {
+      AOS.refreshHard();
+    };
+  }, []);
+
   return (
     <section
       id="why-us"
-      className="relative isolate overflow-hidden bg-[#050507] py-20 text-white sm:py-24 lg:py-28"
+      className="relative isolate overflow-hidden bg-white py-20 text-[#101828] sm:py-24 lg:py-28"
     >
-      {/* BACKGROUND GLOW */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-[#29B6F0]/10 blur-[120px] animate-[ambientDrift_12s_ease-in-out_infinite]"
-      />
+      {/* MAIN CONTAINER */}
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-56 left-1/4 h-96 w-96 rounded-full bg-[#7A4FD1]/10 blur-[120px] animate-[ambientFloat_10s_ease-in-out_infinite]"
-      />
+      <div className="container relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
 
-      {/* GRID BACKGROUND */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(41,182,240,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(41,182,240,0.12)_1px,transparent_1px)] [background-size:55px_55px] [mask-image:linear-gradient(to_left,black,transparent_90%)]"
-      />
+        {/* =====================================
+            SECTION HEADING
+        ===================================== */}
 
-      <div className="container relative mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-10">
+        <div className="mb-12 grid gap-8 lg:mb-14 lg:grid-cols-[1fr_0.7fr] lg:items-end lg:gap-16">
 
-        {/* LEFT CONTENT */}
-        <div className="animate-[fadeUp_0.9s_ease-out_both]">
-          <Eyebrow light>Why BeaverTek</Eyebrow>
+          {/* LEFT HEADING */}
 
-          <h2 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            Experience that
-            <span className="mt-2 block bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9] bg-clip-text text-transparent">
-              stays with the work.
-            </span>
-          </h2>
+          <div data-aos="fade-up">
+            <Eyebrow>Why BeaverTek</Eyebrow>
 
-          <p className="mt-7 max-w-md leading-8 text-[#D4D4D8]">
-            We know you have plenty of options. Here&apos;s why companies
-            choose BeaverTek. Senior guidance, hands-on engineering and
-            a team that understands what it takes to keep technology
-            working in the real world.
-          </p>
+            <h2 className="max-w-3xl text-[34px] font-extrabold leading-[1.12] tracking-[-0.04em] text-[#101828] sm:text-[42px] md:text-[46px] lg:text-[54px]">
+              Experience that
+
+              <span className="mt-2 block bg-[linear-gradient(110deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_70%,#B93FC9_100%)] bg-clip-text text-transparent">
+                stays with the work.
+              </span>
+            </h2>
+          </div>
+
+          {/* RIGHT DESCRIPTION */}
+
+          <div data-aos="fade-up" data-aos-delay="150">
+            <p className="max-w-lg border-l-[3px] border-[#29B6F0] pl-6 text-base leading-8 text-[#596579] sm:text-[17px]">
+              We know you have plenty of options. Here&apos;s why companies
+              choose BeaverTek. Senior guidance, hands-on engineering and
+              a team that understands what it takes to keep technology
+              working in the real world.
+            </p>
+          </div>
         </div>
 
-        {/* RIGHT REASONS LIST */}
-        <div className="divide-y divide-white/10">
-          {reasons.map((reason, index) => (
-            <article
-              key={reason.title}
-              className="group grid gap-5 py-8 transition-all duration-500 hover:translate-x-2 sm:grid-cols-[50px_1fr_30px] animate-[fadeUp_0.8s_ease-out_both]"
-              style={{
-                animationDelay: `${index * 150}ms`,
-              }}
-            >
-              {/* NUMBER */}
-              <span className="pt-1 text-sm font-bold text-[#29B6F0] transition-colors duration-300 group-hover:text-[#B93FC9]">
-                0{index + 1}
-              </span>
+        {/* =====================================
+            REASONS GRID
+        ===================================== */}
 
-              {/* CONTENT */}
-              <div>
-                <h3 className="text-xl font-semibold text-white transition-colors duration-300 group-hover:text-[#29B6F0] sm:text-2xl">
+        <div className="grid gap-5 sm:grid-cols-2 lg:gap-6">
+
+          {reasons.map((reason, index) => {
+            const Icon = reason.icon;
+
+            return (
+              <article
+                key={reason.title}
+                data-aos="fade-up"
+                data-aos-delay={index * 120}
+                className="group relative overflow-hidden rounded-2xl border border-[#E7EBF0] bg-white p-6 shadow-[0_5px_25px_rgba(16,24,40,0.035)] transition-all duration-500 hover:-translate-y-1 hover:border-[#29B6F0]/30 hover:shadow-[0_16px_40px_rgba(16,24,40,0.075)] sm:p-7 lg:p-8"
+              >
+                {/* CARD HEADER */}
+
+                <div className="mb-6 flex items-center gap-4">
+
+                  {/* ICON BOX */}
+
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#29B6F0]/15 bg-[#29B6F0]/[0.06] text-[#3E7BD6] transition-all duration-500 group-hover:border-transparent group-hover:bg-[linear-gradient(135deg,#29B6F0,#3E7BD6,#7A4FD1)] group-hover:text-white">
+
+                    <Icon
+                      size={23}
+                      strokeWidth={1.8}
+                      className="transition-transform duration-500 group-hover:scale-110"
+                    />
+
+                  </div>
+
+                  {/* SUBTLE DIVIDER */}
+
+                  <div className="h-px flex-1 bg-[#E9EDF2] transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-[#29B6F0] group-hover:to-[#B93FC9]" />
+
+                </div>
+
+                {/* CARD TITLE */}
+
+                <h3 className="text-xl font-extrabold leading-snug tracking-tight text-[#101828] transition-colors duration-300 group-hover:text-[#3E7BD6] sm:text-[22px]">
                   {reason.title}
                 </h3>
 
-                <p className="mt-3 max-w-xl text-sm leading-7 text-[#A0A0A8] transition-colors duration-300 group-hover:text-[#D4D4D8]">
+                {/* CARD DESCRIPTION */}
+
+                <p className="mt-3 max-w-lg text-sm leading-7 text-[#667085] sm:text-[15px]">
                   {reason.description}
                 </p>
-              </div>
 
-              {/* ARROW */}
-              <span className="text-2xl text-[#29B6F0] transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#B93FC9]">
-                ↗
-              </span>
-            </article>
-          ))}
+                {/* BOTTOM GRADIENT HOVER */}
+
+                <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[linear-gradient(90deg,#29B6F0,#3E7BD6,#7A4FD1,#B93FC9)] transition-all duration-500 group-hover:w-full" />
+
+              </article>
+            );
+          })}
+
         </div>
+
       </div>
-
-      {/* ANIMATION KEYFRAMES */}
-      <style jsx>{`
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(25px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes ambientDrift {
-          0%,
-          100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(-25px, 30px);
-          }
-        }
-
-        @keyframes ambientFloat {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-25px);
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          section *,
-          section *::before,
-          section *::after {
-            animation: none !important;
-            transition-duration: 0.01ms !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

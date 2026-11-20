@@ -14,6 +14,12 @@ const technologies = [
   { label: "AI", position: "left-[-2%] top-1/2 -translate-y-1/2" },
 ];
 
+const backgroundSlides = [
+  "/home/hero1.webp",
+  "/home/hero2.webp",
+  "/home/hero3.webp",
+];
+
 function HeroVisual() {
   return (
     <div className="relative mx-auto flex aspect-square w-full max-w-[440px] items-center justify-center">
@@ -137,7 +143,7 @@ function HeroVisual() {
       <div className="relative z-20 h-[53%] w-[53%] overflow-hidden rounded-full border border-white/30 bg-[#101827] p-[5px] shadow-[0_0_60px_rgba(41,182,240,0.22)]">
         <div className="relative h-full w-full overflow-hidden rounded-full border border-[#29B6F0]/30">
           <Image
-            src="/home/About.jpg"
+            src="/visuals/engineering-orbit.svg"
             alt="BeaverTek technology and engineering"
             fill
             priority
@@ -155,7 +161,7 @@ function HeroVisual() {
           key={item.label}
           data-aos="zoom-in"
           data-aos-delay={200 + index * 120}
-          className={`absolute z-30 ${item.position} rounded-full border border-white/15 bg-[#080D16]/95 px-4 py-2.5 text-[9px] font-bold tracking-[0.2em] text-[#29B6F0] shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl transition duration-300 hover:border-[#29B6F0]/60 hover:text-white sm:px-5 sm:py-3 sm:text-[10px]`}
+          className={`absolute z-30 ${item.position} rounded-full border border-white/15 bg-[#121212]/95 px-4 py-2.5 text-[9px] font-bold tracking-[0.2em] text-[#29B6F0] shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl transition duration-300 hover:border-[#29B6F0]/60 hover:text-white sm:px-5 sm:py-3 sm:text-[10px]`}
         >
           {item.label}
         </div>
@@ -190,8 +196,21 @@ export default function SeniorEngineers() {
   return (
     <section
       id="top"
-      className="relative isolate overflow-hidden bg-[#080A0F] text-white"
+      className="relative isolate overflow-hidden bg-brand-ink text-white"
     >
+      <div aria-hidden="true" className="hero-slideshow absolute inset-0">
+        {backgroundSlides.map((image, index) => (
+          <div
+            key={image}
+            className="hero-slideshow__slide absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url("${image}")`,
+              animationDelay: `${index * -8}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* BACKGROUND GRADIENTS */}
       <div
         aria-hidden="true"
@@ -230,7 +249,7 @@ export default function SeniorEngineers() {
             data-aos-delay="200"
           >
             Senior engineers who build, modernize and{" "}
-            <span className="bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] bg-clip-text text-transparent">
+            <span className="bg-brand-gradient bg-clip-text text-transparent">
               run your technology.
             </span>
           </h1>
@@ -254,7 +273,7 @@ export default function SeniorEngineers() {
           >
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] px-6 py-3.5 text-xs font-bold text-white shadow-[0_8px_30px_rgba(41,182,240,0.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_12px_35px_rgba(41,182,240,0.3)] sm:px-7 sm:text-sm"
+              className="group inline-flex items-center justify-center gap-3 rounded-full bg-brand-gradient px-6 py-3.5 text-xs font-bold text-white shadow-[0_8px_30px_rgba(41,182,240,0.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_12px_35px_rgba(41,182,240,0.3)] sm:px-7 sm:text-sm"
             >
               Talk to an engineer
               <span className="transition-transform duration-300 group-hover:translate-x-1">

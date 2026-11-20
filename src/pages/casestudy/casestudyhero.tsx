@@ -1,5 +1,4 @@
 import App_layout from "@/component/layout/app_layout";
-import Image from "next/image";
 import CaseStudiesHero from "./CaseStudiesHero";
 import CaseStudiesHeader from "./CaseStudiesHeader";
 import CaseStudiesFooter from "./CaseStudiesFooter";

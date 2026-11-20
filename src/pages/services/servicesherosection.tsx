@@ -99,6 +99,7 @@ export default function ServicesHerosection() {
           md:py-14
           lg:py-16
           xl:py-22
+        
         "
       >
         
@@ -414,7 +415,7 @@ export default function ServicesHerosection() {
               data-aos="fade-left"
               data-aos-delay="200"
               data-aos-duration="900"
-              className="relative mx-auto w-full max-w-[540px] min-w-0"
+              className="relative mx-auto w-full max-w-[540px] min-w-0 pt-12"
             >
               {/* =================================================
                   SERVICE GRID

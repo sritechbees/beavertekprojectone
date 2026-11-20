@@ -10,6 +10,9 @@ import ProductsCta from "./ProductsCta";
 import ProductCapabilities from "./ProductCapabilities";
 import ProductPlatform from "./ProductPlatform";
 import ProductRelationship from "./ProductRelationship";
+import Product from "./productcard";
+import Productcard from "./productcard";
+
 
 function ArrowIcon() {
   return (
@@ -223,6 +226,7 @@ export default function ProductsSection() {
       </section>
       <ProductsHeader/>
       <ProductsHero/>
+      <Productcard/>
       <ProductCapabilities/>
       <ProductPlatform/>
       <ProductRelationship/>

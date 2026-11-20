@@ -9,18 +9,19 @@ import DrivingSuccess from "./DrivingSuccess";
 import TheRightShape from "./TheRightShape";
 import GoodQuestions from "./GoodQuestions";
 import NeedSenior from "./NeedSenior";
-import SeniorEngineers from "./SeniorEngineers";
+
 
 
 import App_layout from "@/component/layout/app_layout";
+import Herosection from "./herosection";
 export default function Home() {
   return (
     <>
       <App_layout>
-        <main id="main" className="overflow-hidden bg-white">
+        <main>
           {/* HERO */}
-
-          <SeniorEngineers />
+           <Herosection/>
+          {/* <SeniorEngineers /> */}
           {/* ABOUT */}
 
           <BigCompanyThinking />

@@ -27,7 +27,7 @@ export default function NeedSenior() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-[#050507] py-28 text-white"
+      className="relative overflow-hidden bg-brand-ink py-28 text-white"
     >
       {/* BACKGROUND GLOWS */}
       <div className="pointer-events-none absolute -right-40 -top-40 h-[550px] w-[550px] animate-ambient-drift rounded-full bg-[#29B6F0]/20 blur-[140px] motion-reduce:animate-none" />
@@ -45,7 +45,7 @@ export default function NeedSenior() {
         <div data-aos="fade-right" data-aos-duration="1000">
           <h2 className="max-w-2xl text-5xl font-semibold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
             Need senior
-            <span className="block bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9] bg-clip-text text-transparent">
+            <span className="block bg-brand-gradient bg-clip-text text-transparent">
               technology help?
             </span>
           </h2>
@@ -58,7 +58,7 @@ export default function NeedSenior() {
           <div className="mt-9">
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-[#29B6F0]/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#7A4FD1]/20"
+              className="group inline-flex items-center justify-center rounded-full bg-brand-gradient px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-[#29B6F0]/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#7A4FD1]/20"
             >
               Talk to an engineer
             </Link>

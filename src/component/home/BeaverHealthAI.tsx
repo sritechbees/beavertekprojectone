@@ -42,7 +42,7 @@ function PrimaryButton({
   return (
     <Link
       href={href}
-      className="group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] px-7 py-4 text-sm font-bold text-white shadow-lg shadow-[#3E7BD6]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#7A4FD1]/30"
+      className="group inline-flex items-center justify-center gap-3 rounded-full bg-brand-gradient px-7 py-4 text-sm font-bold text-white shadow-lg shadow-[#3E7BD6]/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#7A4FD1]/30"
     >
       {children}
       <ArrowUpRight
@@ -61,7 +61,7 @@ export default function BeaverHealthAI() {
   return (
     <section
       id="products"
-      className="relative isolate overflow-hidden bg-[#050507] py-20 text-white sm:py-24 lg:py-28"
+      className="relative isolate overflow-hidden bg-brand-paper py-20 text-[#101828] sm:py-24 lg:py-28"
     >
       {/* BACKGROUND GLOW EFFECTS */}
       <div
@@ -87,16 +87,16 @@ export default function BeaverHealthAI() {
           <div className="animate-[fadeUp_0.9s_ease-out_both]">
             <Eyebrow light>Built by BeaverTek</Eyebrow>
 
-            <h2 className="text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+            <h2 className="text-5xl font-semibold tracking-tight text-[#101828] sm:text-6xl lg:text-7xl">
               BeaverHealth
-              <span className="bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9] bg-clip-text text-transparent">
+              <span className="bg-brand-gradient bg-clip-text text-transparent">
                 AI
               </span>
             </h2>
           </div>
 
           <div className="animate-[fadeUp_0.9s_ease-out_0.2s_both]">
-            <p className="max-w-xl text-lg leading-8 text-[#D4D4D8]">
+            <p className="max-w-xl text-lg leading-8 text-[#596579]">
               Healthcare AI products, built and operated by the team
               that engineers them.
             </p>

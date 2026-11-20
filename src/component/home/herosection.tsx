@@ -1,0 +1,704 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { Box, ChevronRight } from "lucide-react";
+
+/* ================================================================
+   PROJECTS
+================================================================ */
+
+const projects = [
+  { id: "triora", name: "Triora", image: "/product/triora.png" },
+  { id: "care360", name: "Care360 AI", image: "/product/Care360 AI.png" },
+  { id: "clipcraft", name: "Clip Craft AI", image: "/product/Clip craft AI.png" },
+  { id: "intakeplus", name: "IntakePlus", image: "/product/IntakePlus.png" },
+  { id: "medlens", name: "MedLens", image: "/product/Medlens Image Processing.png" },
+  { id: "tractor", name: "Tractor", image: "/product/Tractor.png" },
+  { id: "medisync", name: "MediSync", image: "/product/MediSync.png" },
+  { id: "easymedi", name: "EasyMedi", image: "/product/EasyMedi Pharmacy Management.png" },
+  { id: "medflow", name: "MedFlow AI", image: "/product/End-to-End Digital Transformation.jpg" },
+];
+
+/* ================================================================
+   STATS
+================================================================ */
+
+const stats = [
+  {
+    number: "10+",
+    title: "WEBSITE",
+    subtitle: "DEMOS",
+    icon: "screen" as const,
+  },
+  {
+    number: "80+",
+    title: "TOTAL INNER",
+    subtitle: "PAGES",
+    icon: "file" as const,
+  },
+  {
+    number: "350+",
+    title: "TOTAL",
+    subtitle: "BLOCKS",
+    icon: "grid" as const,
+  },
+  {
+    number: "10+",
+    title: "MEGA MENU",
+    subtitle: "DESIGNS",
+    icon: "menu" as const,
+  },
+];
+
+/* ================================================================
+   HERO SECTION
+================================================================ */
+
+function Herosection() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+  const positionRef = useRef(0);
+  const pausedRef = useRef(false);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 850,
+      once: true,
+      offset: 60,
+      easing: "ease-out-cubic",
+      mirror: false,
+    });
+
+    AOS.refresh();
+
+    return () => {
+      if (animationRef.current !== null) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
+  /* ================================================================
+     INFINITE SHOWCASE
+  ================================================================ */
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const speed = 1.5;
+
+    const animate = () => {
+      if (!pausedRef.current) {
+        positionRef.current -= speed;
+
+        const loopWidth = track.scrollWidth / 2;
+
+        if (loopWidth > 0 && Math.abs(positionRef.current) >= loopWidth) {
+          positionRef.current += loopWidth;
+        }
+
+        track.style.transform = `translate3d(${positionRef.current}px, 0, 0)`;
+      }
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current !== null) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <section
+      className="
+        relative w-full overflow-hidden bg-cover bg-center bg-no-repeat
+        px-4 pb-10 pt-7
+        sm:px-6 sm:pb-12 sm:pt-9
+        lg:px-10 lg:pb-14 lg:pt-28
+        xl:px-16
+      "
+      style={{ backgroundImage: "url('/home/homebg.jpeg')" }}
+    >
+      {/* BACKGROUND */}
+      <div className="pointer-events-none absolute inset-0 bg-black/10" />
+
+      <div
+        className="
+          pointer-events-none absolute inset-0
+          bg-[linear-gradient(135deg,rgba(0,0,0,0.65),rgba(0,0,0,0.35),rgba(20,10,45,0.45))]
+        "
+      />
+
+      {/* BACKGROUND GLOW */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-40 top-10 h-[320px] w-[320px] rounded-full bg-[#29B6F0]/15 blur-[120px] sm:h-[420px] sm:w-[420px]" />
+
+        <div className="absolute -right-40 top-0 h-[400px] w-[400px] rounded-full bg-[#7A4FD1]/18 blur-[130px] sm:h-[520px] sm:w-[520px]" />
+
+        <div className="absolute bottom-[-180px] left-1/2 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-[#B93FC9]/12 blur-[130px]" />
+
+        <div
+          className="
+            absolute inset-0 opacity-[0.035]
+            [background-image:linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)]
+            [background-size:55px_55px]
+          "
+        />
+      </div>
+
+      
+    
+      {/* MAIN */}
+      <div className="relative z-10 mx-auto w-full max-w-[1400px]">
+
+        {/* HERO */}
+        <div className="grid items-center gap-8 lg:grid-cols-[.88fr_1.12fr] lg:gap-10 xl:gap-12">
+
+          {/* LEFT */}
+          <div
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            className="relative z-20 mx-auto w-full max-w-[560px] text-center lg:mx-0 lg:text-left"
+          >
+            {/* LABEL */}
+            <div
+              data-aos="zoom-in"
+              data-aos-delay="100"
+              className="
+                mb-4 inline-flex items-center gap-2 rounded-full
+                border border-white/15 bg-black/20 px-3.5 py-1.5
+                backdrop-blur-xl transition-all duration-500
+                hover:border-[#29B6F0]/50 hover:bg-white/[.06]
+              "
+            >
+              <span className="relative flex h-1.5 w-1.5 items-center justify-center">
+                <span className="absolute h-1.5 w-1.5 rounded-full bg-[#29B6F0] shadow-[0_0_12px_rgba(41,182,240,0.95)]" />
+                <span className="absolute h-3 w-3 animate-ping rounded-full bg-[#29B6F0]/20" />
+              </span>
+
+              <span className="text-[10px] font-semibold uppercase tracking-[.18em] text-[#D4D4D8] sm:text-[9px]">
+                
+IRVINE, CALIFORNIA/CHENNAI, INDIA
+              </span>
+            </div>
+
+            {/* TITLE */}
+            <h1
+  data-aos="fade-up"
+  data-aos-delay="150"
+  data-aos-duration="850"
+  className="
+    text-[26px]
+    font-extrabold
+    leading-[1.12]
+    tracking-[-0.035em]
+    text-white
+    drop-shadow-[0_6px_25px_rgba(0,0,0,0.35)]
+    sm:text-[31px]
+    md:text-[36px]
+    lg:text-[39px]
+    xl:text-[44px]
+    2xl:text-[48px]
+  "
+>
+  Senior engineers who build, modernize and
+  <br />
+  <span className="bg-[linear-gradient(135deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_65%,#B93FC9_100%)] bg-clip-text text-transparent">
+    run your technology.
+  </span>
+</h1>
+
+            {/* DESCRIPTION */}
+             <p
+              data-aos="fade-up"
+              data-aos-duration="850"
+              data-aos-delay="260"
+              className="
+              z-10
+                mt-4
+                max-w-xl
+                text-sm
+                leading-6.5
+                text-[#D4D4D8]
+                transition-colors
+                duration-500
+
+          
+
+                sm:mt-5
+                sm:text-[15px]
+                sm:leading-7
+
+                md:text-base
+                md:leading-7
+
+                lg:text-[17px]
+                lg:leading-7.5
+              "
+            >
+              Your trusted partner in IT managed services and innovative
+            technology solutions. BeaverTek helps growing companies ship
+            custom software, put AI to work, see their data clearly and
+            stay secure led from California, engineered by our team in India.
+            </p>
+
+
+          </div>
+
+          {/* RIGHT */}
+          <div
+            data-aos="fade-left"
+            data-aos-delay="150"
+            data-aos-duration="1000"
+            className="relative mx-auto w-full max-w-[700px] lg:translate-x-2 xl:translate-x-4"
+          >
+            {/* DIGITAL ORB */}
+            <div
+              className="
+                pointer-events-none absolute -right-[8%] -top-[27%]
+                h-[320px] w-[320px] rounded-full
+                border border-[#29B6F0]/25
+                bg-[radial-gradient(circle_at_30%_30%,rgba(41,182,240,0.3),rgba(62,123,214,0.12)_35%,rgba(122,79,209,0.08)_58%,transparent_72%)]
+                shadow-[0_0_100px_rgba(41,182,240,0.18)]
+                sm:h-[430px] sm:w-[430px]
+                md:h-[520px] md:w-[520px]
+                lg:h-[600px] lg:w-[600px]
+              "
+            />
+
+            {/* ORBIT */}
+            <div
+              className="
+                pointer-events-none absolute right-[4%] top-[7%]
+                h-[100px] w-[350px] rotate-[-18deg]
+                rounded-[50%] border border-[#7A4FD1]/35
+                shadow-[0_0_35px_rgba(122,79,209,0.15)]
+                sm:w-[440px]
+              "
+            />
+
+            {/* ORB LIGHT */}
+            <div className="pointer-events-none absolute right-[12%] top-[18%] h-2 w-2 animate-pulse rounded-full bg-[#29B6F0] shadow-[0_0_25px_8px_rgba(41,182,240,0.35)]" />
+
+            {/* PANEL GLOW */}
+            <div
+              className="
+                pointer-events-none absolute inset-[5%] rounded-[34px]
+                bg-[linear-gradient(135deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_65%,#B93FC9_100%)]
+                opacity-20 blur-[45px]
+              "
+            />
+
+            {/* PANEL */}
+            <div
+              className="
+                relative z-10 overflow-hidden rounded-[23px]
+                bg-[linear-gradient(135deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_65%,#B93FC9_100%)]
+                p-[1px]
+                shadow-[0_25px_90px_rgba(0,0,0,0.55),0_0_40px_rgba(62,123,214,0.18)]
+                transition-all duration-700
+                hover:-translate-y-1
+                hover:shadow-[0_30px_100px_rgba(62,123,214,0.28),0_0_60px_rgba(185,63,201,0.22)]
+                sm:rounded-[27px]
+              "
+            >
+              <div
+                className="
+                  relative overflow-hidden rounded-[22px]
+                  bg-[#121212] p-2 backdrop-blur-2xl
+                  sm:rounded-[26px] sm:p-2.5
+                "
+              >
+                {/* PANEL LIGHT */}
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(41,182,240,0.1)_0%,transparent_30%,transparent_52%,rgba(122,79,209,0.08)_72%,rgba(185,63,201,0.12)_100%)]" />
+
+                <div className="pointer-events-none absolute -left-20 -top-20 h-44 w-44 rounded-full bg-[#29B6F0]/15 blur-[65px]" />
+
+                <div className="pointer-events-none absolute right-[-50px] top-[25%] h-48 w-48 rounded-full bg-[#7A4FD1]/12 blur-[70px]" />
+
+                <div className="pointer-events-none absolute bottom-[-70px] right-[-30px] h-44 w-44 rounded-full bg-[#B93FC9]/12 blur-[65px]" />
+
+                {/* TOP LIGHT */}
+                <div className="pointer-events-none absolute left-[7%] right-[7%] top-0 h-[2px] rounded-full bg-[linear-gradient(90deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_65%,#B93FC9_100%)] shadow-[0_0_15px_rgba(41,182,240,0.65)]" />
+
+                {/* STATS */}
+                <div className="relative z-10 grid grid-cols-2 gap-1.5 sm:grid-cols-4 sm:gap-2">
+                  {stats.map((stat, index) => (
+                    <StatCard
+                      key={stat.title}
+                      {...stat}
+                      delay={250 + index * 80}
+                    />
+                  ))}
+                </div>
+
+                {/* INFO BAR */}
+                <div
+                  data-aos="fade-up"
+                  data-aos-delay="600"
+                  className="
+                    relative z-10 mt-2 flex items-center justify-between
+                    gap-3 overflow-hidden rounded-[13px]
+                    border border-[#2A2A30] bg-[#1A1A1E]/80
+                    px-3 py-3 backdrop-blur-xl
+                    transition-all duration-500
+                    hover:border-[#3E7BD6]/60 hover:bg-[#1A1A1E]
+                    sm:px-4
+                  "
+                >
+                  <div className="relative z-10 flex min-w-0 items-center gap-2.5">
+                    <div
+                      className="
+                        flex h-8 w-8 shrink-0 items-center justify-center
+                        rounded-[9px]
+                        bg-[linear-gradient(135deg,rgba(41,182,240,0.15),rgba(62,123,214,0.12),rgba(122,79,209,0.12),rgba(185,63,201,0.15))]
+                      "
+                    >
+                      <Box className="h-4 w-4 text-[#D4D4D8]" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <p className="truncate text-[8px] font-semibold tracking-[.05em] text-white sm:text-[9px]">
+                        DIGITAL SHOWCASE
+                      </p>
+
+                      <p className="mt-0.5 truncate text-[7px] text-[#7A7A7A] sm:text-[8px]">
+                        Built for modern businesses
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="relative z-10 hidden text-right sm:block">
+                    <p className="bg-[linear-gradient(135deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_65%,#B93FC9_100%)] bg-clip-text text-[8px] font-bold tracking-[.16em] text-transparent">
+                      BEAVERTEK
+                    </p>
+
+                    <p className="mt-0.5 text-[8px] text-[#7A7A7A]">
+                      Build. Scale. Transform.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* FLOATING DOTS */}
+            <span className="pointer-events-none absolute -right-1 top-[18%] h-2 w-2 animate-pulse rounded-full bg-[#29B6F0] shadow-[0_0_18px_#29B6F0]" />
+
+            <span className="pointer-events-none absolute bottom-[8%] left-[4%] h-1.5 w-1.5 animate-pulse rounded-full bg-[#B93FC9] shadow-[0_0_16px_#B93FC9]" />
+
+            <span className="pointer-events-none absolute bottom-[3%] right-[15%] h-1 w-1 rounded-full bg-[#7A4FD1] shadow-[0_0_12px_#7A4FD1]" />
+          </div>
+        </div>
+
+        {/* SELECTED WORK */}
+        <div
+          data-aos="fade-up"
+          data-aos-delay="200"
+          className="relative mt-9 sm:mt-11 lg:mt-12"
+        >
+          {/* HEADER */}
+          <div className="mb-3.5 flex items-end justify-between gap-4">
+            <div data-aos="fade-right" data-aos-delay="250">
+              <p className="text-[8px] py-2 font-semibold uppercase tracking-[.2em] text-[#29B6F0] sm:text-[9px]">
+                Selected Work
+              </p>
+
+              <h3 className="mt-0.5 text-lg font-semibold tracking-[-.035em] text-white sm:text-xl md:text-xl">
+                Digital products in motion.
+              </h3>
+            </div>
+
+            <p
+              data-aos="fade-left"
+              data-aos-delay="300"
+              className="hidden max-w-[280px] text-right text-[9px] leading-4 text-[#8A8A92] sm:block"
+            >
+              A continuous showcase of our digital product experiences.
+            </p>
+          </div>
+
+          {/* SHOWCASE */}
+          <div
+            className="relative -mx-4 overflow-hidden sm:-mx-6 lg:-mx-10 xl:-mx-16"
+            onMouseEnter={() => (pausedRef.current = true)}
+            onMouseLeave={() => (pausedRef.current = false)}
+          >
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-14 bg-gradient-to-r from-black/75 to-transparent sm:w-20 lg:w-32 xl:w-40" />
+
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-14 bg-gradient-to-l from-black/75 to-transparent sm:w-20 lg:w-32 xl:w-40" />
+
+            <div
+              ref={trackRef}
+              className="flex w-max gap-3 py-2 pl-4 will-change-transform sm:gap-4 sm:pl-6 lg:gap-5 lg:pl-10 xl:pl-16"
+            >
+              {[...projects, ...projects].map((project, index) => (
+                <ProductCard
+                  key={`${project.id}-${index}`}
+                  id={project.id}
+                  name={project.name}
+                  image={project.image}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* BOTTOM LABEL */}
+          <div
+            data-aos="zoom-in"
+            data-aos-delay="400"
+            className="mt-3 flex items-center justify-center gap-2"
+          >
+            <span className="h-px w-7 bg-gradient-to-r from-transparent to-[#29B6F0] sm:w-9" />
+
+            <span className="text-[7px] font-medium uppercase tracking-[.2em] text-[#62626B] sm:text-[8px]">
+              Continuous Showcase
+            </span>
+
+            <span className="h-px w-7 bg-gradient-to-l from-transparent to-[#B93FC9] sm:w-9" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================================================================
+   STAT ICON
+================================================================ */
+
+function StatIcon({
+  type,
+}: {
+  type: "screen" | "file" | "grid" | "menu";
+}) {
+  const common =
+    "h-4 w-4 text-[#D4D4D8] transition-transform duration-300 group-hover/stat:scale-110";
+
+  if (type === "screen") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className={common}>
+        <rect x="3" y="4" width="18" height="13" rx="2" />
+        <path d="M8 21h8" />
+        <path d="M12 17v4" />
+      </svg>
+    );
+  }
+
+  if (type === "file") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className={common}>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <path d="M14 2v6h6" />
+        <path d="M8 13h8" />
+        <path d="M8 17h6" />
+      </svg>
+    );
+  }
+
+  if (type === "grid") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className={common}>
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className={common}>
+      <path d="M4 6h16" />
+      <path d="M4 12h16" />
+      <path d="M4 18h10" />
+      <circle cx="18" cy="18" r="2" />
+    </svg>
+  );
+}
+
+/* ================================================================
+   PRODUCT CARD
+================================================================ */
+
+function ProductCard({
+  id,
+  name,
+  image,
+}: {
+  id: string;
+  name: string;
+  image: string;
+}) {
+  return (
+    <Link
+      href={`/products/product#${id}`}
+      aria-label={`Explore ${name}`}
+      className="
+        group/product relative block h-[150px] w-[245px] shrink-0
+        overflow-hidden rounded-[18px]
+        border border-white/10 bg-[#121212]
+        shadow-[0_15px_45px_rgba(0,0,0,0.35)]
+        transition-all duration-700
+        hover:-translate-y-2 hover:scale-[1.02]
+        hover:border-[#3E7BD6]/60
+        hover:shadow-[0_20px_55px_rgba(62,123,214,0.20),0_0_35px_rgba(185,63,201,0.12)]
+        focus-visible:outline-none focus-visible:ring-2
+        focus-visible:ring-[#29B6F0]
+        sm:h-[175px] sm:w-[290px]
+        lg:h-[195px] lg:w-[330px]
+      "
+    >
+      <img
+        src={image}
+        alt={name}
+        loading="lazy"
+        draggable={false}
+        className="h-full w-full object-cover transition-transform duration-700 group-hover/product:scale-110"
+      />
+
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-all duration-500 group-hover/product:from-black/95" />
+
+      <div className="absolute left-0 top-0 h-[2px] w-0 bg-[linear-gradient(90deg,#29B6F0,#3E7BD6,#7A4FD1,#B93FC9)] shadow-[0_0_15px_rgba(41,182,240,0.8)] transition-all duration-700 group-hover/product:w-full" />
+
+      <div className="absolute inset-x-0 bottom-0 z-10 translate-y-3 p-4 opacity-0 transition-all duration-500 group-hover/product:translate-y-0 group-hover/product:opacity-100 group-focus-visible/product:translate-y-0 group-focus-visible/product:opacity-100">
+        <h3 className="text-base font-bold text-white sm:text-lg">{name}</h3>
+        <p className="mt-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-[#29B6F0] sm:text-[10px]">
+          Explore Product
+        </p>
+      </div>
+
+      <div className="pointer-events-none absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 scale-75 items-center justify-center rounded-full border border-white/20 bg-black/40 opacity-0 backdrop-blur-md transition-all duration-500 group-hover/product:scale-100 group-hover/product:opacity-100">
+        <ChevronRight className="h-4 w-4 text-white" />
+      </div>
+
+      <span className="absolute right-3 top-3 h-1.5 w-1.5 rounded-full bg-[#29B6F0] shadow-[0_0_12px_#29B6F0]" />
+    </Link>
+  );
+}
+
+/* ================================================================
+   STAT CARD
+================================================================ */
+
+function StatCard({
+  number,
+  title,
+  subtitle,
+  icon,
+  delay,
+}: {
+  number: string;
+  title: string;
+  subtitle: string;
+  icon: "screen" | "file" | "grid" | "menu";
+  delay: number;
+}) {
+  const target = parseInt(number.replace(/\D/g, ""), 10);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTime: number | null = null;
+    let frame: number;
+
+    const duration = 850;
+
+    const animate = (time: number) => {
+      if (!startTime) startTime = time;
+
+      const progress = Math.min((time - startTime) / duration, 1);
+
+      // Fast digital-style count
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+
+      if (progress < 1) {
+        frame = requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+      }
+    };
+
+    const timer = setTimeout(() => {
+      frame = requestAnimationFrame(animate);
+    }, delay);
+
+    return () => {
+      clearTimeout(timer);
+      cancelAnimationFrame(frame);
+    };
+  }, [target, delay]);
+
+  return (
+    <div
+      data-aos="fade-up"
+      data-aos-delay={delay}
+      data-aos-duration="850"
+      className="
+        group/stat relative min-h-[125px] overflow-hidden
+        rounded-[14px] bg-[#121212] p-2.5
+        backdrop-blur-xl transition-all duration-500
+        hover:-translate-y-1 hover:bg-[#17171A]
+        hover:shadow-[0_18px_45px_rgba(62,123,214,0.18)]
+        sm:min-h-[140px] sm:rounded-[16px] sm:p-3
+        md:min-h-[145px]
+        lg:min-h-[150px]
+      "
+    >
+      {/* SUBTLE GRADIENT */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(41,182,240,0.06),transparent_40%,rgba(185,63,201,0.08))]" />
+
+      {/* BOTTOM ACCENT */}
+      <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[linear-gradient(90deg,#29B6F0,#3E7BD6,#7A4FD1,#B93FC9)] transition-all duration-500 group-hover/stat:w-full" />
+
+      {/* CONTENT */}
+      <div className="relative z-10 flex h-full min-h-[120px] flex-col items-center justify-center text-center sm:min-h-[135px]">
+
+        {/* ICON */}
+        <div
+          className="
+            flex h-10 w-10 items-center justify-center rounded-full
+            bg-[linear-gradient(135deg,rgba(41,182,240,0.15),rgba(62,123,214,0.12),rgba(122,79,209,0.14),rgba(185,63,201,0.16))]
+            shadow-[0_0_18px_rgba(41,182,240,0.08)]
+            transition-all duration-500
+            group-hover/stat:scale-110
+          "
+        >
+          <StatIcon type={icon} />
+        </div>
+
+        {/* NUMBER */}
+        <div className="mt-3">
+          <span
+            className="
+              block bg-[linear-gradient(135deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_65%,#B93FC9_100%)]
+              bg-clip-text text-[28px] font-black leading-none
+              tracking-[-0.06em] text-transparent
+              sm:text-[32px] md:text-[34px] lg:text-[35px]
+            "
+          >
+            {count}+
+          </span>
+        </div>
+
+        {/* TEXT */}
+        <div className="mt-2.5">
+          <p className="text-[8px] font-semibold leading-[1.4] tracking-[0.07em] text-[#A0A0A8] sm:text-[9px] md:text-[10px]">
+            {title}
+            <br />
+            {subtitle}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Herosection;
