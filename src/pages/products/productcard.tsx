@@ -406,7 +406,8 @@ export default function Productcard() {
 
       <section
         ref={productsRef}
-        id="all-products"
+        id="productcard"
+
         className="relative isolate scroll-mt-20 overflow-hidden px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14"
       >
         <div
