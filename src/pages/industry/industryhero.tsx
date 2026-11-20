@@ -6,6 +6,7 @@ import App_layout from '@/component/layout/app_layout'
 import IndustryHero from './industryherosection'
 import IndustryProof from './insudtryproof'
 import IndustrySolutions from './industrysolutions'
+import FooterCTA from '@/component/home/footercta'
 
 function Industryhero() {
   return (
@@ -14,6 +15,7 @@ function Industryhero() {
     <IndustryHero/>
     <IndustryProof/>
     <IndustrySolutions/>
+    <FooterCTA/>
       </App_layout>
     </div>
   )

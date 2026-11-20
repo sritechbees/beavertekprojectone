@@ -1,11 +1,10 @@
 import App_layout from "@/component/layout/app_layout";
 import CaseStudiesHero from "./CaseStudiesHero";
-import CaseStudiesHeader from "./CaseStudiesHeader";
-import CaseStudiesFooter from "./CaseStudiesFooter";
 import PaymentPlatformCaseStudy from "./PaymentPlatformCaseStudy";
 import HealthcareAiCaseStudy from "./HealthcareAiCaseStudy";
 import DataReportingCaseStudy from "./DataReportingCaseStudy";
-import CaseStudiesCta from "./CaseStudiesCta";
+import FooterCTA from "@/component/home/footercta";
+
 
 export default function CaseStudiesSection() {
   return (
@@ -13,12 +12,12 @@ export default function CaseStudiesSection() {
    
    
     <CaseStudiesHero/>
-     <CaseStudiesHeader/>
+    
     <PaymentPlatformCaseStudy/>
     <HealthcareAiCaseStudy/>
     <DataReportingCaseStudy/>
-     <CaseStudiesFooter/>
-    <CaseStudiesCta/>
+   <FooterCTA/>
+   
 
     </App_layout>
   );

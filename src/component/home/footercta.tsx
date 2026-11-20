@@ -293,7 +293,7 @@ export default function FooterCTA() {
 
             {/* View Case Studies */}
             <Link
-              href="/customers/casestudyoverall"
+              href="/casestudy/casestudyhero"
               className="
                 group
                 inline-flex
