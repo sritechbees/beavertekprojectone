@@ -231,10 +231,10 @@ export default function BigCompanyThinking() {
                   </p>
 
                   <div className="flex items-center gap-1.5 text-[9px] font-semibold text-[#3E7BD6] sm:gap-2 sm:text-[10px]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#29B6F0] shadow-[0_0_8px_#29B6F0]" />
-                    GLOBAL DELIVERY
-                    <MoveUpRight size={12} />
-                  </div>
+  <span className="h-1.5 w-1.5 rounded-full bg-[#29B6F0] shadow-[0_0_8px_#29B6F0]" />
+  ENGINEERING EXCELLENCE
+ 
+</div>
                 </div>
               </div>
             </div>

@@ -155,12 +155,7 @@ function Services() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0F] via-black/15 to-black/10" />
                   <div className="absolute inset-0 bg-black/10 transition-colors duration-500 group-hover:bg-black/0" />
 
-                  {/* Top label */}
-                  <div className="absolute left-5 top-5">
-                    <span className="rounded-full border border-white/20 bg-black/45 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.17em] text-white/85 backdrop-blur-lg">
-                      BeaverTek Solutions
-                    </span>
-                  </div>
+                 
 
                   {/* Service icon */}
                   <div className="absolute bottom-5 left-5 flex h-[58px] w-[58px] items-center justify-center rounded-[18px] border border-[#29B6F0]/30 bg-[#08090D]/85 text-[#29B6F0] shadow-lg backdrop-blur-xl transition-all duration-500 group-hover:scale-105 group-hover:border-[#29B6F0]/60 group-hover:bg-[#29B6F0]/15">
@@ -182,19 +177,7 @@ function Services() {
                     {service.description}
                   </p>
 
-                  {/* BOTTOM ACTION */}
-                  <div className="mt-auto flex items-center justify-between pt-7">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 transition-colors duration-300 group-hover:text-[#29B6F0]">
-                      Explore Service
-                    </span>
-
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.03] text-white/75 transition-all duration-300 group-hover:border-[#29B6F0]/50 group-hover:bg-[#29B6F0] group-hover:text-white">
-                      <ArrowUpRight
-                        size={18}
-                        className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                      />
-                    </span>
-                  </div>
+                 
                 </div>
               </article>
             );

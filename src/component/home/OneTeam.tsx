@@ -1,12 +1,10 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Plus } from "lucide-react";
 import type { ReactNode } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 /* =========================================
    SERVICE PILLARS
@@ -104,50 +102,20 @@ function SectionHeading({
   description: string;
 }) {
   return (
-    <div
-      className="mx-auto mb-8 max-w-3xl text-center sm:mb-10 lg:mb-12"
-      data-aos="fade-up"
-      data-aos-duration="900"
-    >
-      <span className="mb-3 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#29B6F0] sm:text-xs">
+    <div className="mx-auto mb-7 max-w-3xl text-center sm:mb-8 lg:mb-9">
+      <span className="mb-2 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#29B6F0] sm:text-xs">
         <span className="h-1.5 w-1.5 rounded-full bg-[#29B6F0]" />
         {eyebrow}
       </span>
 
-      <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-extrabold leading-[1.1] tracking-[-0.045em] text-white">
+      <h2 className="text-[clamp(1.8rem,3.8vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.045em] text-white">
         {title}
       </h2>
 
-      <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#D4D4D8] sm:mt-4 sm:text-base sm:leading-7">
+      <p className="mx-auto mt-2.5 max-w-2xl text-xs leading-6 text-[#D4D4D8] sm:mt-3 sm:text-sm sm:leading-7">
         {description}
       </p>
     </div>
-  );
-}
-
-/* =========================================
-   PRIMARY BUTTON
-========================================= */
-
-function PrimaryButton({
-  href,
-  children,
-}: {
-  href: string;
-  children: ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`group inline-flex items-center justify-center gap-2.5 rounded-full ${brandGradient} px-5 py-3 text-sm font-bold text-white shadow-[0_4px_15px_rgba(62,123,214,0.2)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(122,79,209,0.3)] sm:px-6 sm:py-3.5`}
-    >
-      {children}
-
-      <ArrowUpRight
-        size={17}
-        className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-      />
-    </Link>
   );
 }
 
@@ -158,27 +126,10 @@ function PrimaryButton({
 export default function OneTeam() {
   const [activePillar, setActivePillar] = useState<number | null>(0);
 
-  useEffect(() => {
-    AOS.init({
-      duration: 850,
-      once: true,
-      offset: 45,
-      easing: "ease-out-cubic",
-      mirror: false,
-      anchorPlacement: "top-bottom",
-    });
-
-    AOS.refresh();
-
-    return () => {
-      AOS.refreshHard();
-    };
-  }, []);
-
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-[#000000] py-10 sm:py-14 lg:py-16"
+      className="relative overflow-hidden bg-[#000000] py-8 text-white sm:py-10 lg:py-12"
     >
       <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
@@ -204,15 +155,12 @@ export default function OneTeam() {
 
         {/* MAIN GRID */}
 
-        <div className="grid items-stretch gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:gap-7">
+        <div className="grid items-stretch gap-4 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6">
 
           {/* LEFT FEATURE CARD */}
 
-          <div
-            data-aos="fade-right"
-            data-aos-duration="1000"
-            className="group relative flex min-h-[340px] overflow-hidden rounded-2xl border border-[#2A2A30] bg-[#121212] shadow-[0_12px_30px_rgba(0,0,0,0.35)] sm:min-h-[380px] lg:min-h-full"
-          >
+          <div className="group relative flex min-h-[310px] overflow-hidden rounded-2xl border border-[#2A2A30] bg-[#121212] shadow-[0_12px_30px_rgba(0,0,0,0.35)] sm:min-h-[350px] lg:min-h-full">
+
             {/* Background Image */}
 
             <div
@@ -222,19 +170,18 @@ export default function OneTeam() {
 
             {/* Brand Overlay */}
 
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-[radial-gradient(circle_at_78%_24%,rgba(41,182,240,0.2),transparent_35%),radial-gradient(circle_at_18%_80%,rgba(185,63,201,0.2),transparent_40%),linear-gradient(135deg,rgba(18,18,18,0.3),rgba(0,0,0,0.65))]"
-            />
-
+           <div
+  aria-hidden="true"
+  className="absolute inset-0 bg-[radial-gradient(circle_at_78%_24%,rgba(41,182,240,0.32),transparent_40%),radial-gradient(circle_at_18%_80%,rgba(185,63,201,0.30),transparent_45%),linear-gradient(135deg,rgba(18,18,18,0.12),rgba(0,0,0,0.42))]"
+/>
             {/* Card Content */}
 
-            <div className="relative z-10 mt-auto w-full p-5 sm:p-6 lg:p-7">
+            <div className="relative z-10 mt-auto w-full p-4 sm:p-5 lg:p-6">
               <span className="inline-flex rounded-full border border-[#29B6F0]/40 bg-[#29B6F0]/10 px-3 py-1.5 text-[10px] font-semibold tracking-[0.15em] text-[#29B6F0] backdrop-blur sm:text-[11px]">
                 DIGITAL STRATEGY
               </span>
 
-              <h3 className="mt-3 max-w-sm text-[clamp(1.25rem,2.2vw,1.8rem)] font-semibold leading-[1.2] tracking-[-0.025em] text-white">
+              <h3 className="mt-2.5 max-w-sm text-[clamp(1.2rem,2vw,1.65rem)] font-semibold leading-[1.2] tracking-[-0.025em] text-white">
                 Modern systems. Smarter operations. Better outcomes.
               </h3>
             </div>
@@ -242,22 +189,20 @@ export default function OneTeam() {
 
           {/* RIGHT SERVICE ACCORDION */}
 
-          <div className="flex flex-col gap-2.5">
+          <div className="flex flex-col gap-2">
             {pillars.map((pillar, index) => {
               const isOpen = activePillar === index;
 
               return (
                 <div
                   key={pillar.number}
-                  data-aos="fade-up"
-                  data-aos-duration="800"
-                  data-aos-delay={index * 80}
-                  className={`group rounded-xl border bg-[#121212] p-4 shadow-[0_8px_22px_rgba(0,0,0,0.25)] transition-all duration-300 sm:p-5 ${
+                  className={`group rounded-xl border bg-[#121212] p-3.5 shadow-[0_8px_22px_rgba(0,0,0,0.25)] transition-colors duration-300 sm:p-4 ${
                     isOpen
                       ? "border-[#3E7BD6]/70 shadow-[0_8px_25px_rgba(62,123,214,0.10)]"
                       : "border-[#2A2A30] hover:border-[#3E7BD6]/60"
                   }`}
                 >
+
                   {/* ACCORDION HEADER */}
 
                   <button
@@ -271,18 +216,21 @@ export default function OneTeam() {
                     }
                     className="flex w-full cursor-pointer items-start gap-3 text-left sm:gap-4"
                   >
+
                     {/* Title & Description */}
 
                     <div className="min-w-0 flex-1">
                       <h3
-                        className={`text-base font-semibold leading-snug transition-colors duration-300 sm:text-lg ${
-                          isOpen ? "text-white" : "text-[#D4D4D8]"
+                        className={`text-sm font-semibold leading-snug transition-all duration-300 sm:text-base ${
+                          isOpen
+                            ? "bg-gradient-to-r from-[#29B6F0] via-[#7A4FD1] to-[#B93FC9] bg-clip-text text-transparent"
+                            : "text-[#D4D4D8] group-hover:bg-gradient-to-r group-hover:from-[#29B6F0] group-hover:via-[#7A4FD1] group-hover:to-[#B93FC9] group-hover:bg-clip-text group-hover:text-transparent"
                         }`}
                       >
                         {pillar.title}
                       </h3>
 
-                      <p className="mt-1.5 text-xs leading-6 text-[#A0A0A8] sm:text-sm sm:leading-6">
+                      <p className="mt-1 text-xs leading-5 text-[#A0A0A8] sm:text-[13px] sm:leading-6">
                         {pillar.description}
                       </p>
                     </div>
@@ -305,18 +253,18 @@ export default function OneTeam() {
                   {isOpen && (
                     <div
                       id={`service-content-${index}`}
-                      className="ml-6 mt-4 border-t border-[#2A2A30] pt-4 sm:ml-8 sm:mt-5 sm:pt-5"
+                      className="ml-6 mt-3 border-t border-[#2A2A30] pt-3 sm:ml-8 sm:mt-4 sm:pt-4"
                     >
+
                       {/* SERVICE LIST */}
 
-                      <ul className="grid gap-x-4 gap-y-2.5 sm:grid-cols-2 sm:gap-y-3">
+                      <ul className="grid gap-x-4 gap-y-2 sm:grid-cols-2 sm:gap-y-2.5">
                         {pillar.services.map((service) => (
                           <li
                             key={service}
-                            className="flex items-start gap-2.5 text-xs leading-5 text-[#D4D4D8] transition-colors duration-300 hover:text-[#29B6F0] sm:text-sm"
+                            className="flex items-start gap-2.5 text-xs leading-5 text-[#D4D4D8] transition-colors duration-300 hover:text-[#29B6F0] sm:text-[13px]"
                           >
                             <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-[#29B6F0] to-[#B93FC9]" />
-
                             {service}
                           </li>
                         ))}
@@ -326,7 +274,7 @@ export default function OneTeam() {
 
                       <Link
                         href={pillar.href}
-                        className="group/link mt-5 inline-flex items-center gap-2 text-xs font-bold text-[#29B6F0] transition-colors duration-300 hover:text-[#B93FC9] sm:text-sm"
+                        className="group/link mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#29B6F0] transition-colors duration-300 hover:text-[#B93FC9] sm:text-sm"
                       >
                         Discuss this service
 

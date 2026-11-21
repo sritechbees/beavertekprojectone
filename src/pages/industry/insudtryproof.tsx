@@ -13,12 +13,12 @@ import "aos/dist/aos.css";
 
 const metrics = [
   {
-    value: "150",
+    value: "150+",
     label: "Clients",
     description: "On the documented payment platform",
   },
   {
-    value: "4.5M",
+    value: "4.5M+",
     label: "Monthly Transactions",
     description: "Processed by the payment platform",
   },

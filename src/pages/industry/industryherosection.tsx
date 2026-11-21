@@ -158,7 +158,7 @@ export default function IndustryHero() {
 
           <div className="mt-5 flex flex-wrap gap-2.5 sm:mt-6 sm:gap-3">
             <Link
-              href="/contact"
+              href="/contact/contacthero"
               className="
                 bt-gradient-button rounded-full
                 px-5 py-2.5 text-xs font-semibold

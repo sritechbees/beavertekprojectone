@@ -384,7 +384,7 @@ export default function WhereWeAre() {
 
                     <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-[#8994a3] transition-colors duration-300 group-hover:text-[#3E7BD6]">
                       <span>BeaverTek global presence</span>
-                      <ArrowUpRight size={14} />
+                      
                     </div>
                   </div>
                 </div>

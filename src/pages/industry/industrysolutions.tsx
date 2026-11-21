@@ -94,7 +94,7 @@ export default function IndustrySolutions() {
   return (
     <section
       id="industry-solutions"
-      className="relative isolate overflow-hidden bg-[#000000] px-5 py-10 text-white sm:px-8 sm:py-12 lg:px-12 lg:py-14"
+      className=" mt-4 space-y-2 scroll-mt-24 relative isolate overflow-hidden bg-[#000000] px-5 py-10 text-white sm:px-8 sm:py-12 lg:px-12 lg:py-14"
     >
       <AmoebaBackground />
 

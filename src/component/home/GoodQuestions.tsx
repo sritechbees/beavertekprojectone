@@ -219,7 +219,7 @@ export default function GoodQuestions() {
               {/* IMAGE */}
 
               <Image
-                src="/contact/faq.jpg"
+                src="/contact/faq1.png"
                 alt="BeaverTek technology and digital innovation"
                 fill
                 sizes="(max-width: 1024px) 100vw, 42vw"

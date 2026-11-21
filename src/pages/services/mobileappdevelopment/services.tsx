@@ -324,12 +324,7 @@ export default function Services() {
                     <button className="group/btn inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-xs font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:border-[#3E7BD6]/50 hover:bg-gradient-to-r hover:from-[#29B6F0]/10 hover:to-[#B93FC9]/10 hover:shadow-[0_8px_30px_rgba(62,123,214,0.12)] sm:w-fit sm:gap-3 sm:px-5 sm:py-3 sm:text-sm">
                       Explore Service
 
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#29B6F0] to-[#7A4FD1] transition-all duration-300 group-hover/btn:scale-105 group-hover/btn:shadow-[0_0_18px_rgba(41,182,240,0.3)] sm:h-7 sm:w-7">
-                        <ArrowUpRight
-                          size={14}
-                          className="transition-transform duration-300 group-hover/btn:translate-x-[2px] group-hover/btn:-translate-y-[2px] sm:h-[15px] sm:w-[15px]"
-                        />
-                      </span>
+                    
                     </button>
                   </div>
                 </div>

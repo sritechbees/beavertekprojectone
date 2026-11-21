@@ -662,7 +662,11 @@ function StatCard({
               sm:text-[32px] md:text-[34px] lg:text-[35px]
             "
           >
-            {number.includes("+") ? `${count}+` : count}
+            {number.includes("M+")
+  ? `${(count / 10).toFixed(1)}M+`
+  : number.includes("+")
+    ? `${count}+`
+    : count}
           </span>
         </div>
 

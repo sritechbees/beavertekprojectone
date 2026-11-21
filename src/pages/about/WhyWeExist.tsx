@@ -105,10 +105,7 @@ export default function WhyWeExist() {
                 A better way to build and grow
               </span>
 
-              <ArrowUpRight
-                size={16}
-                className="text-[#7A4FD1]"
-              />
+              
             </div>
           </div>
         </div>

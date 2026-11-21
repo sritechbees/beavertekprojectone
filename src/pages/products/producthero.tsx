@@ -12,6 +12,7 @@ import Productcontent from "./productcontent";
 
 import Head from "next/head";
 
+
 function ArrowIcon() {
   return (
     <svg
@@ -116,131 +117,116 @@ export default function ProductsSection() {
       <Head>
       <title>Beavertek | Product</title>
       </Head>
-      <section
-        id="products"
-        className="relative product-text details  isolate overflow-hidden bg-[#05070D] text-white"
-      >
-        {/* BACKGROUND DECORATION */}
-        <div className="pointer-events-none absolute -left-52 top-10 h-[400px] w-[400px] rounded-full bg-[#3E7BD6]/10 blur-[130px] sm:h-[500px] sm:w-[500px]" />
-
-        <div className="pointer-events-none absolute -right-52 top-[30%] h-[400px] w-[400px] rounded-full bg-[#7A4FD1]/10 blur-[140px] sm:h-[500px] sm:w-[500px]" />
-
-        {/* HERO SECTION */}
-        <div className="relative lg:min-h-[640px]">
-
-          {/* RIGHT IMAGE - DESKTOP */}
-          <div className="absolute inset-y-0 right-0 hidden w-[52%] lg:block">
-            <div className="absolute inset-0 overflow-hidden">
-              <Image
-                src="/product/Product Banner.png"
-                alt="BeaverHealthAI healthcare technology solutions"
-                fill
-                priority
-                sizes="52vw"
-                className="object-cover object-right"
-              />
-            </div>
-
-            {/* GEOMETRIC BRAND SHAPE */}
-            <div className="pointer-events-none absolute left-[-65px] top-0 h-full w-[220px]">
-              <div className="absolute left-10 top-[-10%] h-[125%] w-[95px] -rotate-[27deg] bg-[#29B6F0]/90" />
-
-              <div className="absolute left-10 top-[-10%] h-[125%] w-[95px] rotate-[27deg] bg-[#7A4FD1]/75 mix-blend-screen" />
-            </div>
-          </div>
-
-          {/* MOBILE IMAGE */}
-          {/* MOBILE IMAGE */}
-<div className="relative h-[260px] w-full overflow-hidden sm:h-[320px] md:h-[360px] lg:hidden">
-  <Image
-    src="/home/About.jpg"
-    alt="Healthcare technology solutions"
-    fill
-    priority
-    sizes="100vw"
-    className="object-cover max-sm:pt-20 object-[center_35%] sm:object-center"
-  />
-
-  <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-[#05070D]/20 to-transparent" />
-</div>
-{/* HERO CONTENT */}
-<div className="relative mx-auto flex max-w-7xl items-center px-5 py-9 sm:px-8 sm:py-12 md:px-10 md:py-14 lg:min-h-[640px] lg:px-12 lg:py-12">
-  <div className="w-full max-w-xl">
-
-    {/* EYEBROW */}
-    <div
-      data-aos="fade-up"
-      className="inline-flex items-center gap-2 rounded-full border border-[#29B6F0]/30 bg-[#29B6F0]/[0.08] px-3 py-1.5 sm:gap-2.5 sm:px-3.5 sm:py-2"
-    >
-      <span className="h-1.5 w-1.5 rounded-full bg-[#29B6F0] shadow-[0_0_12px_#29B6F0]" />
-
-      <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#29B6F0] sm:text-[10px] sm:tracking-[0.18em]">
-        Built by BeaverTek
-      </span>
-    </div>
-
-    {/* MAIN TITLE */}
-    <h2
-      data-aos="fade-up"
-      data-aos-delay="100"
-      className="mt-4 text-[29px] font-bold leading-[1.12] tracking-[-0.04em] text-white sm:mt-5 sm:text-[35px] md:text-[42px] lg:mt-6 lg:text-[48px] xl:text-[52px]"
-    >
-      Intelligent
-
-      <span className="block bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9] bg-clip-text text-transparent">
-        Healthcare
-      </span>
-
-      <span className="block">Powered by AI</span>
-    </h2>
-
-    {/* DESCRIPTION */}
-    <div
-      data-aos="fade-up"
-      data-aos-delay="200"
-      className="mt-4 sm:mt-5"
-    >
-      <h3 className="text-lg font-semibold tracking-tight text-white sm:text-xl md:text-2xl">
-        BeaverHealth<span className="text-[#29B6F0]">AI</span>
-      </h3>
-
-      <p className="mt-2 max-w-lg text-[13px] leading-6 text-slate-300 sm:mt-3 sm:text-sm sm:leading-7 md:text-[15px]">
-        Healthcare AI products, built and operated by the team that
-        engineers them. We create intelligent healthcare solutions
-        that help modernize patient experiences and clinical
-        workflows.
-      </p>
-    </div>
-
-    {/* CTA */}
-    <div
-      data-aos="fade-up"
-      data-aos-delay="300"
-      className="mt-5 flex flex-wrap items-center gap-3 sm:mt-6 sm:gap-4"
-    >
-      <Link
-        href="/contact"
-        className="group inline-flex min-h-[44px] items-center gap-2 rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] px-4 py-2.5 text-[11px] font-bold text-white shadow-[0_12px_35px_rgba(41,182,240,0.20)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_45px_rgba(41,182,240,0.35)] sm:min-h-[48px] sm:gap-2.5 sm:px-5 sm:py-3 sm:text-xs md:text-sm"
-      >
-        Request a Product Demo
-        <ArrowIcon />
-      </Link>
-
-      <Link
-        href="#productcard"
-        className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-white transition-colors hover:text-[#29B6F0] sm:gap-2 sm:text-xs md:text-sm"
-      >
-        Explore Products
-        <span className="text-base">↓</span>
-      </Link>
-    </div>
-
+      
+<section
+  id="products"
+  className="relative isolate overflow-hidden bg-[#010621] text-white"
+>
+  {/* FULL BACKGROUND IMAGE - DESKTOP */}
+  <div className="absolute inset-0 z-0 hidden md:block">
+    <Image
+      src="/product/Product Banner2.png"
+      alt="BeaverHealthAI healthcare technology solutions"
+      fill
+      priority
+      sizes="100vw"
+      className="object-cover object-right"
+    />
   </div>
-</div>
 
-        </div>
-      </section>
+  {/* MOBILE IMAGE */}
+  <div className="relative h-[250px] w-full overflow-hidden sm:h-[310px] max-sm:mt-20 md:hidden">
+    <Image
+      src="/product/Product Banner2.png"
+      alt="BeaverHealthAI healthcare technology solutions"
+      fill
+      priority
+      sizes="100vw"
+      className="object-cover object-center max-sm:object-right"
+    />
 
+    <div className="absolute inset-0 bg-gradient-to-t from-[#010621] via-[#010621]/10 to-transparent" />
+  </div>
+
+  {/* HERO CONTENT */}
+  <div className="relative z-10 mx-auto flex min-h-[auto] max-w-7xl items-center justify-center px-5 pb-12 pt-3 sm:px-8 sm:pb-14 md:min-h-[620px] md:justify-start md:px-10 md:py-16 lg:min-h-[660px] lg:px-12 lg:py-16 xl:min-h-[680px]">
+
+    <div className="w-full max-w-xl text-center md:text-left">
+
+      {/* EYEBROW */}
+      <div
+        data-aos="fade-up"
+        className="inline-flex items-center gap-2 rounded-full border border-[#29B6F0]/30 bg-[#010621]/60 px-3 py-1.5 backdrop-blur-md sm:gap-2.5 sm:px-3.5 sm:py-2"
+      >
+        <span className="h-1.5 w-1.5 rounded-full bg-[#29B6F0] shadow-[0_0_12px_#29B6F0]" />
+
+        <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#29B6F0] sm:text-[10px] sm:tracking-[0.18em]">
+          Built by BeaverTek
+        </span>
+      </div>
+
+      {/* MAIN TITLE */}
+      <h2
+        data-aos="fade-up"
+        data-aos-delay="100"
+        className="mt-4 text-[30px] font-bold leading-[1.12] tracking-[-0.04em] text-white sm:mt-5 sm:text-[36px] md:text-[42px] lg:mt-6 lg:text-[48px] xl:text-[52px]"
+      >
+        Intelligent
+
+        <span className="block bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#B93FC9] bg-clip-text text-transparent">
+          Healthcare
+        </span>
+
+        <span className="block">Powered by AI</span>
+      </h2>
+
+      {/* DESCRIPTION */}
+      <div
+        data-aos="fade-up"
+        data-aos-delay="200"
+        className="mt-4 sm:mt-5"
+      >
+        <h3 className="text-lg font-semibold tracking-tight text-white sm:text-xl md:text-2xl">
+          BeaverHealth<span className="text-[#29B6F0]">AI</span>
+        </h3>
+
+        <p className="mx-auto mt-2 max-w-lg text-[13px] leading-6 text-slate-200 sm:mt-3 sm:text-sm sm:leading-7 md:mx-0 md:text-[15px]">
+          Healthcare AI products, built and operated by the team that
+          engineers them. We create intelligent healthcare solutions
+          that help modernize patient experiences and clinical
+          workflows.
+        </p>
+      </div>
+
+      {/* CTA BUTTONS */}
+      <div
+        data-aos="fade-up"
+        data-aos-delay="300"
+        className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:mt-7 md:justify-start"
+      >
+        <Link
+          href="/contact/contacthero"
+          className="group inline-flex min-h-[46px] items-center gap-2 rounded-full bg-gradient-to-r from-[#29B6F0] via-[#3E7BD6] to-[#7A4FD1] px-5 py-3 text-[11px] font-bold text-white shadow-[0_12px_35px_rgba(41,182,240,0.20)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_45px_rgba(41,182,240,0.35)] sm:min-h-[48px] sm:gap-2.5 sm:px-6 sm:text-xs md:text-sm"
+        >
+          Request a Product Demo
+          <ArrowIcon />
+        </Link>
+
+        <Link
+          href="#productcard"
+          className="inline-flex items-center gap-2 text-[11px] font-semibold text-white transition-colors hover:text-[#29B6F0] sm:text-xs md:text-sm"
+        >
+          Explore Products
+          <span className="text-base">↓</span>
+        </Link>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+      
+     
       <Productsoftware />
       <Productcard />
       <ProductPlatform />
