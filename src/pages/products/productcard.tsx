@@ -321,10 +321,13 @@ const products = [
   },
 ];
 
+
 export default function Productcard() {
   const [selectedId, setSelectedId] = useState("triora");
+
   const productsRef = useRef<HTMLElement>(null);
   const detailsRef = useRef<HTMLElement>(null);
+  const shouldScrollAfterNavigation = useRef(false);
 
   const selectedProduct =
     products.find((product) => product.id === selectedId) ?? products[0];
@@ -350,23 +353,19 @@ export default function Productcard() {
   useEffect(() => {
     const syncProductFromHash = () => {
       const productId = window.location.hash.replace("#", "");
+
       const matchedProduct = products.find(
         (product) => product.id === productId
       );
 
       if (!matchedProduct) return;
 
+      shouldScrollAfterNavigation.current = true;
       setSelectedId(matchedProduct.id);
-
-      requestAnimationFrame(() => {
-        detailsRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      });
     };
 
     syncProductFromHash();
+
     window.addEventListener("hashchange", syncProductFromHash);
 
     return () => {
@@ -376,10 +375,31 @@ export default function Productcard() {
 
   useEffect(() => {
     AOS.refresh();
+
+    if (shouldScrollAfterNavigation.current) {
+      shouldScrollAfterNavigation.current = false;
+
+      requestAnimationFrame(() => {
+        const element = detailsRef.current;
+
+        if (!element) return;
+
+        const top =
+          element.getBoundingClientRect().top +
+          window.scrollY -
+          85;
+
+        window.scrollTo({
+          top,
+          behavior: "smooth",
+        });
+      });
+    }
   }, [selectedId]);
 
   const selectProduct = (id: string) => {
     setSelectedId(id);
+    window.history.replaceState(null, "", `#${id}`);
   };
 
   const navigateProduct = (direction: "previous" | "next") => {
@@ -392,57 +412,50 @@ export default function Productcard() {
         ? (currentIndex + 1) % products.length
         : (currentIndex - 1 + products.length) % products.length;
 
-    setSelectedId(products[nextIndex].id);
+    const nextProduct = products[nextIndex];
 
-    detailsRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    shouldScrollAfterNavigation.current = true;
+
+    setSelectedId(nextProduct.id);
+
+    window.history.replaceState(null, "", `#${nextProduct.id}`);
   };
 
   return (
-    <main className="overflow-hidden bg-[#05070D] text-white">
+    <main className="relative isolate w-full overflow-hidden bg-[#000000] text-white">
+
       {/* ================= PRODUCTS INTRO ================= */}
 
       <section
         ref={productsRef}
         id="productcard"
-
-        className="relative isolate scroll-mt-20 overflow-hidden px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14"
+        className="relative isolate overflow-hidden bg-[#000000] px-4 pb-10 pt-12 text-white sm:px-6 sm:pb-12 sm:pt-16 lg:px-8 lg:pb-14 lg:pt-20"
       >
-        <div
-          className="absolute inset-0 -z-20 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/images/healthcare-products.jpg')",
-          }}
-        />
-
-        <div className="absolute inset-0 -z-10 bg-[#05070D]/80" />
+        {/* Subtle Background Glow */}
 
         <div
-          className="absolute inset-0 -z-10"
-          style={{
-            background:
-              "linear-gradient(180deg,rgba(5,7,13,0.35) 0%,rgba(5,7,13,0.82) 100%)",
-          }}
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-40 left-1/2 -z-0 h-80 w-[80%] -translate-x-1/2 rounded-full opacity-[0.09] blur-[130px]"
+          style={{ background: gradient }}
         />
 
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <p
-              data-aos="fade-up"
-              data-aos-duration="750"
-              className="text-xs font-semibold uppercase tracking-[0.18em] text-[#29B6F0] sm:text-sm sm:tracking-[0.22em]"
-            >
-              Explore Our Products
-            </p>
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div
+            data-aos="fade-up"
+            className="mx-auto w-full max-w-4xl px-1 text-center"
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 backdrop-blur-md sm:px-5">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#D4D4D8] sm:text-xs sm:tracking-[0.24em]">
+                Explore Our Products
+              </span>
 
-            <h2
-              data-aos="fade-up"
-              data-aos-duration="850"
-              data-aos-delay="100"
-              className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl"
-            >
+              <span
+                className="h-1.5 w-1.5 shrink-0 rounded-full"
+                style={{ background: gradient }}
+              />
+            </div>
+
+            <h2 className="mx-auto mt-5 max-w-3xl text-[28px] font-extrabold leading-[1.18] tracking-[-0.045em] text-white sm:mt-6 sm:text-4xl md:text-5xl lg:text-[3.4rem]">
               Technology built around{" "}
               <span
                 className="bg-clip-text text-transparent"
@@ -452,16 +465,16 @@ export default function Productcard() {
               </span>
             </h2>
 
-            <p
-              data-aos="fade-up"
-              data-aos-duration="850"
-              data-aos-delay="200"
-              className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-gray-300 sm:mt-4 sm:text-base sm:leading-7"
-            >
+            <p className="mx-auto mt-4 max-w-2xl text-[13px] leading-6 text-gray-400 sm:text-sm sm:leading-7 md:text-base md:leading-8">
               From patient intake to preventive care, discover solutions
               designed to support healthcare teams and patient experiences.
               Select a product to learn more.
             </p>
+
+            <div
+              className="mx-auto mt-6 h-[3px] w-16 rounded-full sm:w-20"
+              style={{ background: gradient }}
+            />
           </div>
         </div>
       </section>
@@ -469,160 +482,218 @@ export default function Productcard() {
       {/* ================= PRODUCT SHOWCASE ================= */}
 
       <section
-        className="relative isolate scroll-mt-20 overflow-hidden border-t border-white/[0.08] bg-[#05070D]"
+        className="relative isolate overflow-hidden bg-[#000000] px-4 pb-14 pt-6 text-white sm:px-6 sm:pb-16 sm:pt-8 lg:px-8 lg:pb-20 lg:pt-10"
         aria-label="Healthcare product showcase"
       >
+        {/* Background Accents */}
+
         <div
-          className="pointer-events-none absolute inset-0 -z-10 opacity-30"
-          style={{
-            background:
-              "radial-gradient(ellipse at 10% 10%,rgba(41,182,240,0.10),transparent 40%),radial-gradient(ellipse at 90% 45%,rgba(122,79,209,0.10),transparent 40%)",
-          }}
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-48 top-40 -z-0 h-96 w-96 rounded-full opacity-[0.07] blur-[140px]"
+          style={{ background: gradient }}
         />
 
-        <div className="mx-auto grid max-w-[1800px] grid-cols-1 items-start lg:grid-cols-[minmax(0,20fr)_minmax(0,80fr)]">
-          {/* ================= LEFT: PRODUCT LIST ================= */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-48 bottom-20 -z-0 h-96 w-96 rounded-full opacity-[0.06] blur-[140px]"
+          style={{ background: gradient }}
+        />
 
-          <div className="min-w-0 px-4 py-5 sm:px-6 sm:py-6 lg:px-5 lg:py-6 xl:px-7 xl:py-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#29B6F0]">
-              Our Products
-            </p>
+        <div className="relative z-10 mx-auto w-full max-w-7xl">
 
-            <h2 className="mt-2 text-xl font-bold tracking-tight sm:text-2xl lg:text-xl xl:text-xl">
-              Explore Solutions
-            </h2>
+          <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-[0.78fr_1.22fr] lg:gap-12 xl:gap-16">
 
-            <p className="mt-2 hidden text-sm leading-6 text-gray-400 lg:block">
-              Choose a product to explore its features and workflow.
-            </p>
+            {/* ================= LEFT: PRODUCT LIST ================= */}
 
-            <nav
-              aria-label="Healthcare products"
-              className="mt-4 flex gap-2 overflow-x-auto pb-2 [scrollbar-width:thin] lg:mt-6 lg:flex-col lg:gap-1.5 lg:overflow-x-visible lg:overflow-y-visible lg:pb-0"
+            <aside
+              data-aos="fade-up"
+              className="min-w-0 lg:sticky lg:top-24"
             >
-              {products.map((product) => {
-                const ProductIcon = product.icon;
-                const isSelected = selectedId === product.id;
+              <div className="mb-5 flex items-center gap-3">
+                <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.22em] text-[#A1A1AA] sm:text-xs">
+                  Our Products
+                </span>
 
-                return (
-                  <button
-                    key={product.id}
-                    type="button"
-                    onClick={() => selectProduct(product.id)}
-                    aria-pressed={isSelected}
-                    className={`group flex min-h-[58px] min-w-[175px] shrink-0 items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-all duration-300 sm:min-w-[200px] lg:min-w-0 lg:w-full lg:gap-2.5 lg:px-3 lg:py-3 ${
-                      isSelected
-                        ? "border-[#29B6F0]/30 bg-white/[0.075] text-white"
-                        : "border-white/[0.07] bg-white/[0.02] text-gray-400 hover:border-white/15 hover:bg-white/[0.05] hover:text-white lg:border-transparent lg:bg-transparent"
-                    }`}
-                  >
-                    <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors duration-300 sm:h-10 sm:w-10 ${
+                <span className="h-px flex-1 bg-gradient-to-r from-[#29B6F0]/50 via-[#7A4FD1]/30 to-transparent" />
+              </div>
+
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                Explore Solutions
+              </h2>
+
+              <p className="mb-6 max-w-md text-sm leading-6 text-gray-400 sm:leading-7">
+                Choose a product to explore its features and workflow.
+              </p>
+
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
+                {products.map((product) => {
+                  const ProductIcon = product.icon;
+                  const isSelected = selectedId === product.id;
+
+                  return (
+                    <button
+                      key={product.id}
+                      type="button"
+                      onClick={() => selectProduct(product.id)}
+                      aria-pressed={isSelected}
+                      className={`group flex w-full min-w-0 items-center gap-3 rounded-xl px-3 py-3 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#29B6F0]/70 sm:px-4 ${
                         isSelected
-                          ? "text-white"
-                          : "bg-white/[0.06] text-gray-400 group-hover:text-white"
+                          ? "bg-white/[0.07]"
+                          : "bg-transparent hover:bg-white/[0.035]"
                       }`}
-                      style={
-                        isSelected
-                          ? { background: gradient }
-                          : undefined
-                      }
                     >
-                      <ProductIcon size={18} strokeWidth={1.8} />
-                    </span>
+                      {/* Active Indicator */}
 
-                    <span className="min-w-0 flex-1">
-                      <span className="block break-words text-sm font-semibold leading-5">
-                        {product.name}
+                      <span
+                        aria-hidden="true"
+                        className={`h-9 w-[3px] shrink-0 rounded-full transition-opacity duration-300 ${
+                          isSelected ? "opacity-100" : "opacity-0"
+                        }`}
+                        style={{ background: gradient }}
+                      />
+
+                      {/* Product Icon */}
+
+                      <span
+                        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all duration-300 ${
+                          isSelected
+                            ? "text-white"
+                            : "bg-white/[0.055] text-gray-400 group-hover:text-white"
+                        }`}
+                        style={
+                          isSelected
+                            ? { background: gradient }
+                            : undefined
+                        }
+                      >
+                        <ProductIcon size={19} strokeWidth={1.8} />
                       </span>
 
-                      <span className="mt-0.5 block break-words text-xs leading-4 text-gray-500">
-                        {product.category}
+                      {/* Product Information */}
+
+                      <span className="min-w-0 flex-1">
+                        <span
+                          className={`block break-words text-sm font-semibold leading-5 transition-colors duration-300 sm:text-[15px] ${
+                            isSelected
+                              ? "text-white"
+                              : "text-gray-300 group-hover:text-white"
+                          }`}
+                          style={
+                            isSelected
+                              ? {
+                                  backgroundImage: gradient,
+                                  backgroundClip: "text",
+                                  WebkitBackgroundClip: "text",
+                                  color: "transparent",
+                                }
+                              : undefined
+                          }
+                        >
+                          {product.name}
+                        </span>
+
+                        <span className="mt-1 block break-words text-xs leading-4 text-gray-500">
+                          {product.category}
+                        </span>
                       </span>
-                    </span>
 
-                    <ArrowRight
-                      size={15}
-                      className={`hidden shrink-0 transition-all duration-300 lg:block ${
-                        isSelected
-                          ? "text-[#63D5FF] opacity-100"
-                          : "-translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
-                      }`}
-                    />
-                  </button>
-                );
-              })}
-            </nav>
-          </div>
+                      <ArrowRight
+                        size={17}
+                        className={`shrink-0 transition-all duration-300 ${
+                          isSelected
+                            ? "translate-x-0 text-[#29B6F0] opacity-100"
+                            : "-translate-x-1 text-gray-600 opacity-50 group-hover:translate-x-0 group-hover:text-[#29B6F0] group-hover:opacity-100"
+                        }`}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </aside>
 
-          {/* ================= RIGHT: PRODUCT DETAILS ================= */}
+            {/* ================= RIGHT: PRODUCT DETAILS ================= */}
 
-          <div className="min-w-0">
             <section
               ref={detailsRef}
               id="product-information"
               key={selectedProduct.id}
-              className="min-w-0 scroll-mt-5"
+              className="mx-auto w-full min-w-0 max-w-[700px] scroll-mt-24 lg:max-w-none"
             >
-              {/* ================= TITLE AND DESCRIPTION ================= */}
+              {/* PRODUCT IMAGE */}
 
               <div
-                className="border-b border-white/[0.08] px-4 py-6 sm:px-6 sm:py-7 lg:px-7 lg:py-7 xl:px-9"
                 data-aos="fade-up"
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.10] bg-[#080808] p-1.5 shadow-[0_20px_65px_rgba(0,0,0,0.45)] sm:rounded-3xl sm:p-2"
               >
-                <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/15 bg-black/30 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8BE0FF] backdrop-blur-md sm:text-xs sm:tracking-[0.18em]">
-                  <SelectedIcon size={14} className="shrink-0" />
-                  <span>{selectedProduct.category}</span>
-                </div>
-
-                <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-5">
-                  <div className="min-w-0 flex-1">
-                    <h1 className="break-words text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl md:text-4xl xl:text-5xl">
-                      {selectedProduct.name}
-                    </h1>
-
-                    <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-200 sm:mt-3 sm:text-base sm:leading-7">
-                      {selectedProduct.short}
-                    </p>
-
-                    <p className="mt-3 max-w-4xl text-sm leading-6 text-gray-300 sm:mt-4 sm:leading-7">
-                      {selectedProduct.description}
-                    </p>
-                  </div>
-
-                  <div
-                    className="hidden h-11 w-11 shrink-0 items-center justify-center self-start rounded-xl text-white sm:flex lg:h-12 lg:w-12"
-                    style={{ background: gradient }}
-                  >
-                    <SelectedIcon size={22} />
-                  </div>
-                </div>
-              </div>
-
-              {/* ================= FULL WIDTH PRODUCT IMAGE ================= */}
-
-              <div
-                className="group relative w-full min-w-0 overflow-hidden bg-transparent"
-                data-aos="fade-up"
-              >
-                <div className="relative h-[230px] w-full overflow-hidden bg-transparent sm:h-[320px] md:h-[380px] lg:h-[420px] xl:h-[480px]">
+                <div className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-xl bg-[#080808] sm:aspect-[16/9] sm:rounded-2xl">
                   <img
                     src={selectedProduct.image}
                     alt={`${selectedProduct.name} healthcare product`}
                     loading="lazy"
-                    className="absolute inset-0 h-full w-full object-center brightness-110 contrast-105 transition-transform duration-700 group-hover:scale-[1.01]"
+                    className="h-full w-full object-center transition-transform duration-500 group-hover:scale-[1.015]"
+                  />
+
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/[0.04]" />
+
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-3 top-3 h-7 w-7 rounded-tl-lg border-l-2 border-t-2 border-[#29B6F0]/70 sm:left-4 sm:top-4 sm:h-9 sm:w-9"
+                  />
+
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute bottom-3 right-3 h-7 w-7 rounded-br-lg border-b-2 border-r-2 border-[#B93FC9]/70 sm:bottom-4 sm:right-4 sm:h-9 sm:w-9"
                   />
                 </div>
               </div>
 
-              {/* ================= KEY FEATURES + WORKFLOW ================= */}
+              {/* PRODUCT TITLE AND DESCRIPTION */}
 
-              <div className="px-4 py-7 sm:px-6 sm:py-8 lg:px-7 lg:py-8 xl:px-9">
-                <div className="grid min-w-0 grid-cols-1 gap-8 md:grid-cols-2 md:gap-6 xl:gap-9">
+              <div
+                data-aos="fade-up"
+                data-aos-delay="100"
+                className="px-1 pb-1 pt-5 sm:pt-6"
+              >
+                <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/10 bg-white/[0.045] px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8BE0FF] sm:text-xs sm:tracking-[0.18em]">
+                  <SelectedIcon size={15} className="shrink-0" />
+                  <span>{selectedProduct.category}</span>
+                </div>
+
+                <h1
+                  className="mt-4 break-words text-2xl font-extrabold leading-tight tracking-[-0.035em] text-white sm:text-3xl md:text-4xl"
+                  style={{
+                    backgroundImage: gradient,
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                  }}
+                >
+                  {selectedProduct.name}
+                </h1>
+
+                <p className="mt-3 text-sm font-medium leading-6 text-gray-200 sm:text-base sm:leading-7">
+                  {selectedProduct.short}
+                </p>
+
+                <p className="mt-3 max-w-3xl text-[13px] leading-6 text-gray-400 sm:text-sm sm:leading-7">
+                  {selectedProduct.description}
+                </p>
+
+                <div
+                  className="mt-5 h-[2px] w-14 rounded-full"
+                  style={{ background: gradient }}
+                />
+              </div>
+
+              {/* KEY FEATURES + WORKFLOW */}
+
+              <div className="mt-7 border-t border-white/[0.09] pt-7 sm:mt-9 sm:pt-9">
+                <div className="grid min-w-0 grid-cols-1 gap-9 md:grid-cols-2 md:gap-7 xl:gap-10">
+
                   {/* KEY FEATURES */}
 
                   <div className="min-w-0" data-aos="fade-up">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#29B6F0]">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#29B6F0] sm:text-xs">
                       What You Get
                     </p>
 
@@ -635,7 +706,7 @@ export default function Productcard() {
                       operations with practical, purpose-built capabilities.
                     </p>
 
-                    <div className="mt-5 space-y-3.5 sm:mt-6 sm:space-y-4">
+                    <div className="mt-5 space-y-4">
                       {selectedProduct.features.map((feature) => (
                         <div
                           key={feature}
@@ -662,7 +733,7 @@ export default function Productcard() {
                     data-aos="fade-up"
                     data-aos-delay="100"
                   >
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#29B6F0]">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#29B6F0] sm:text-xs">
                       How It Works
                     </p>
 
@@ -675,14 +746,14 @@ export default function Productcard() {
                       one step to the next.
                     </p>
 
-                    <div className="mt-5 space-y-5 sm:mt-6 sm:space-y-6">
+                    <div className="mt-5 space-y-5 sm:space-y-6">
                       {selectedProduct.workflow.map((step) => (
                         <div
                           key={step.title}
-                          className="group relative min-w-0 pl-4"
+                          className="group relative min-w-0 pl-5"
                         >
                           <span
-                            className="absolute left-0 top-[9px] h-2 w-2 rounded-full"
+                            className="absolute left-0 top-[9px] h-2.5 w-2.5 rounded-full"
                             style={{ background: gradient }}
                           />
 
@@ -699,9 +770,9 @@ export default function Productcard() {
                   </div>
                 </div>
 
-                {/* ================= PREVIOUS / NEXT ================= */}
+                {/* PREVIOUS / NEXT */}
 
-                <div className="mt-8 flex flex-col gap-3 border-t border-white/[0.08] pt-5 sm:mt-9 sm:flex-row sm:items-center sm:justify-between sm:pt-6">
+                <div className="mt-9 flex flex-col gap-4 border-t border-white/[0.09] pt-6 sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:pt-7">
                   <p className="text-sm text-gray-400">
                     Explore another healthcare solution
                   </p>
@@ -710,16 +781,19 @@ export default function Productcard() {
                     <button
                       type="button"
                       onClick={() => navigateProduct("previous")}
-                      className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-2.5 text-xs font-semibold text-gray-200 transition-colors duration-300 hover:border-white/30 hover:bg-white/[0.08] hover:text-white sm:px-4 sm:text-sm"
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2.5 text-xs font-semibold text-gray-200 transition-all duration-300 hover:border-[#29B6F0]/50 hover:bg-white/[0.08] hover:text-white sm:text-sm"
                     >
-                      <ArrowRight className="rotate-180" size={15} />
+                      <ArrowRight
+                        className="rotate-180"
+                        size={15}
+                      />
                       Previous
                     </button>
 
                     <button
                       type="button"
                       onClick={() => navigateProduct("next")}
-                      className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full px-3 py-2.5 text-xs font-semibold text-white transition duration-300 hover:opacity-90 sm:px-4 sm:text-sm"
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold text-white transition-all duration-300 hover:opacity-90 sm:text-sm"
                       style={{ background: gradient }}
                     >
                       Next Product
@@ -735,3 +809,4 @@ export default function Productcard() {
     </main>
   );
 }
+

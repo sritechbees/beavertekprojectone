@@ -103,6 +103,47 @@ export default function BuiltAround() {
     };
   }, []);
 
+  /* =========================================
+     SMOOTH SCROLL WITH TOP OFFSET
+  ========================================= */
+
+  useEffect(() => {
+    const handleIndustryLinkClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const link = target.closest<HTMLAnchorElement>(
+        'a[href^="#products"], a[href^="#work"], a[href^="#services"]'
+      );
+
+      if (!link) return;
+
+      const hash = link.getAttribute("href");
+      if (!hash) return;
+
+      const section = document.querySelector(hash);
+      if (!section) return;
+
+      event.preventDefault();
+
+      window.history.replaceState(null, "", hash);
+
+      const top =
+        section.getBoundingClientRect().top +
+        window.scrollY -
+        40;
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+    };
+
+    document.addEventListener("click", handleIndustryLinkClick);
+
+    return () => {
+      document.removeEventListener("click", handleIndustryLinkClick);
+    };
+  }, []);
+
   return (
     <section
       id="industries"
@@ -142,24 +183,22 @@ export default function BuiltAround() {
 
         {/* SECTION HEADING */}
 
-        
-<div data-aos="fade-up">
-  <SectionHeading
-    eyebrow="Industries"
-    title={
-      <>
-        <span className="font-extrabold tracking-[-0.04em]">
-          Built around{" "}
-        </span>
-        <span className="bg-[linear-gradient(110deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_70%,#B93FC9_100%)] bg-clip-text font-black tracking-[-0.04em] text-transparent">
-          your world.
-        </span>
-      </>
-    }
-    description="Practical technology experience across the industries and teams we serve."
-  />
-</div>
-
+        <div data-aos="fade-up">
+          <SectionHeading
+            eyebrow="Industries"
+            title={
+              <>
+                <span className="font-extrabold tracking-[-0.04em]">
+                  Built around{" "}
+                </span>
+                <span className="bg-[linear-gradient(110deg,#29B6F0_0%,#3E7BD6_35%,#7A4FD1_70%,#B93FC9_100%)] bg-clip-text font-black tracking-[-0.04em] text-transparent">
+                  your world.
+                </span>
+              </>
+            }
+            description="Practical technology experience across the industries and teams we serve."
+          />
+        </div>
 
         {/* INDUSTRY CARDS */}
 

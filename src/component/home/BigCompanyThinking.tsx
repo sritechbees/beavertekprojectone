@@ -64,7 +64,7 @@ export default function BigCompanyThinking() {
 
          <h2 className="text-[clamp(1.9rem,4.2vw,3.55rem)] font-extrabold leading-[1.1] tracking-[-0.045em]">
   <span className="block text-gray-950">
-    Big-company thinking.
+    Big company thinking.
   </span>
 
   <span
