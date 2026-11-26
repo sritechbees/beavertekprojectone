@@ -244,16 +244,17 @@ function Contactform() {
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div
-            className="
-              grid
-              lg:grid-cols-2
-              gap-5
-              sm:gap-6
-              md:gap-7
-              lg:gap-8
-              items-start
-            "
-          >
+  id="contactform"
+  className="
+    grid
+    lg:grid-cols-2
+    gap-5
+    sm:gap-6
+    md:gap-7
+    lg:gap-8
+    items-start
+  "
+>
             {/* =================================================
                 LEFT — CONTACT FORM
             ================================================== */}

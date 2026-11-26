@@ -112,7 +112,7 @@ export default function CaseStudiesHero() {
         ))}
 
         {/* DARK OVERLAY */}
-        <div className="absolute inset-0 bg-black/38" />
+        <div className="absolute inset-0 bg-black/28" />
 
         {/* BACKGROUND GRADIENT */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/40 to-black/85" />

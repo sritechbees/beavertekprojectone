@@ -264,44 +264,66 @@ return ( <section className="relative overflow-hidden bg-[linear-gradient(135deg
 
         {/* Bottom CTA Card */}
 
-        <motion.div
-          data-aos="fade-up"
-          data-aos-delay="500"
-          data-aos-duration="800"
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{
-            duration: 0.7,
-            ease: "easeOut",
-          }}
-          className="mt-5 sm:mt-6 rounded-[16px] sm:rounded-[18px] bg-gradient-to-r from-[#27baf4] via-[#3E7BD6] via-[#7A4FD1] to-[#B93FC9] p-5 sm:p-6 md:p-6.5 text-white shadow-[0_20px_50px_rgba(0,0,0,.45)]"
-        >
-          <h3
-            data-aos="fade-up"
-            data-aos-delay="550"
-            className="text-lg sm:text-xl font-bold leading-6"
-          >
-            Still have questions?
-          </h3>
+       <motion.div
+  data-aos="fade-up"
+  data-aos-delay="500"
+  data-aos-duration="800"
+  initial={{
+    opacity: 0,
+    y: 30,
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  viewport={{ once: true, amount: 0.15 }}
+  transition={{
+    duration: 0.7,
+    ease: "easeOut",
+  }}
+  className="mt-5 sm:mt-6 rounded-[16px] sm:rounded-[18px] bg-gradient-to-r from-[#27baf4] via-[#3E7BD6] via-[#7A4FD1] to-[#B93FC9] p-5 sm:p-6 md:p-6.5 text-white shadow-[0_20px_50px_rgba(0,0,0,.45)]"
+>
+  <h3
+    data-aos="fade-up"
+    data-aos-delay="550"
+    className="text-lg sm:text-xl font-bold leading-6"
+  >
+    Still have questions?
+  </h3>
 
-          <p
-            data-aos="fade-up"
-            data-aos-delay="600"
-            className="mt-2 text-xs sm:text-[13px] md:text-sm leading-5 sm:leading-6 text-white/90"
-          >
-            Our team is here to help you with any questions about our
-            services, pricing, or project process.
-          </p>
+  <p
+    data-aos="fade-up"
+    data-aos-delay="600"
+    className="mt-2 text-xs sm:text-[13px] md:text-sm leading-5 sm:leading-6 text-white/90"
+  >
+    Our team is here to help you with any questions about our
+    services, pricing, or project process.
+  </p>
 
-         <Link href="/contact/herosection"> <button data-aos="zoom-in" data-aos-delay="650" className="mt-4 sm:mt-5 rounded-full border border-[#2A2A30] bg-[#121212] px-5 py-2.5 text-xs font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:border-[#3E7BD6] hover:shadow-[0_0_35px_rgba(62,123,214,.35)] sm:px-6 sm:py-3 sm:text-[13px]" > Contact Our Team </button> </Link>
-        </motion.div>
+  <button
+    type="button"
+    onClick={() => {
+      const contactSection = document.getElementById("contactform");
+
+      if (contactSection) {
+        const top =
+          contactSection.getBoundingClientRect().top +
+          window.scrollY -
+          120;
+
+        window.scrollTo({
+          top,
+          behavior: "smooth",
+        });
+      }
+    }}
+    data-aos="zoom-in"
+    data-aos-delay="650"
+    className="mt-4 sm:mt-5 rounded-full border border-[#2A2A30] bg-[#121212] px-5 py-2.5 text-xs font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:border-[#3E7BD6] hover:shadow-[0_0_35px_rgba(62,123,214,.35)] sm:px-6 sm:py-3 sm:text-[13px]"
+  >
+    Contact Our Team
+  </button>
+</motion.div>
       </div>
     </div>
   </div>

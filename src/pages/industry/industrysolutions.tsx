@@ -22,7 +22,7 @@ const industryData = [
       "Healthcare data integration",
     ],
     proof: "Powered by BeaverHealthAI",
-    link: "/products",
+    link: "https://www.beaverhealth.ai/",
     linkText: "Explore BeaverHealthAI",
   },
   {
@@ -40,7 +40,7 @@ const industryData = [
       "Data analytics and reporting",
     ],
     proof: "150 clients · 4.5M monthly transactions",
-    link: "/case-studies",
+    link: "/casestudy/casestudyhero/",
     linkText: "Explore Our Experience",
   },
   {
@@ -58,7 +58,7 @@ const industryData = [
       "Custom business applications",
     ],
     proof: "Technology designed around your workflows",
-    link: "/services",
+    link: "/services/servicesherosection/",
     linkText: "Explore Our Services",
   },
 ];

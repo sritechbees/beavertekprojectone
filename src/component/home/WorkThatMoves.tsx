@@ -22,7 +22,7 @@ const caseStudies = [
     image: "/home/finance.jpeg",
     tag: "PAYMENTS",
    
-    link: "/contact",
+    link: "/contact/contacthero/",
     linkText: "Discuss your project",
   },
   {
@@ -33,7 +33,7 @@ const caseStudies = [
     image: "/home/healthai.jpg",
     tag: "HEALTHCARE AI",
     
-    link: "#products",
+    link: "https://www.beaverhealth.ai/",
     linkText: "Explore BeaverHealthAI",
   },
   {
@@ -44,7 +44,7 @@ const caseStudies = [
     image: "/home/data that.jpg",
     tag: "DATA & ANALYTICS",
    
-    link: "/contact",
+    link: "/contact/contacthero/",
     linkText: "Discuss your project",
   },
 ];
