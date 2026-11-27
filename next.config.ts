@@ -1,10 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+ 
+  trailingSlash: true,
+
   experimental: {
     agentFeedback: true,
   },
+
   turbopack: {
     rules: {
       "*.css": {
@@ -13,6 +16,11 @@ const nextConfig: NextConfig = {
       },
     },
   },
+
+  images: {
+    unoptimized: true,
+  },
+
   reactStrictMode: true,
 };
 
