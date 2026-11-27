@@ -169,7 +169,7 @@ export default function ProductsSection() {
       <h2
         data-aos="fade-up"
         data-aos-delay="100"
-        className="mt-4 text-[30px] font-bold leading-[1.12] tracking-[-0.04em] text-white sm:mt-5 sm:text-[36px] md:text-[42px] lg:mt-6 lg:text-[48px] xl:text-[52px]"
+        className="mt-4 text-[30px] font-extrabold leading-[1.12] tracking-[-0.04em] text-white sm:mt-5 sm:text-[36px] md:text-[42px] lg:mt-6 lg:text-[48px] xl:text-[52px]"
       >
         Intelligent
 

@@ -291,7 +291,7 @@ const products = [
     name: "MedFlow AI",
     category: "End-to-End Care",
     short: "Connected care management across healthcare specialties.",
-    image: "/product/End-to-End Digital Transformation.jpg",
+    image: "/product/MedFlow.png",
     description:
       "Support care management workflows across gynecology, cardiology, diabetic care, and general care.",
     icon: BrainCircuit,
