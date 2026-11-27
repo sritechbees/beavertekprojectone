@@ -28,7 +28,7 @@ export default function PaymentPlatformCaseStudy() {
   return (
     <article
       id="payments"
-      className="relative isolate overflow-hidden bg-[#000000] px-4 py-14 text-white sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-8 lg:py-24"
+      className="relative isolate scroll-mt-16 overflow-hidden bg-[#000000] px-4 py-14 text-white sm:scroll-mt-28 lg:scroll-mt-12 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-8 lg:py-24"
       aria-labelledby="payments-title"
     >
       {/* BACKGROUND DETAILS */}

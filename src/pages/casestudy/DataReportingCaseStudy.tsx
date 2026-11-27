@@ -29,7 +29,7 @@ export default function DataReportingCaseStudy() {
   return (
     <article
       id="reporting"
-      className="relative isolate scroll-mt-24 overflow-hidden bg-black px-4 py-14 text-white sm:scroll-mt-28 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-8 lg:py-24"
+      className="relative isolate scroll-mt-16 overflow-hidden bg-black px-4 py-14 text-white sm:scroll-mt-28 lg:scroll-mt-12 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-8 lg:py-24"
       aria-labelledby="reporting-title"
     >
       {/* BACKGROUND DETAILS */}

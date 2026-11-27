@@ -32,9 +32,10 @@ export default function HeroSection() {
 
   return (
     <App_layout>
-       <Head>
-      <title>Beavertek | Let's Talk</title>
+      <Head>
+        <title>Beavertek | Let's Talk</title>
       </Head>
+
       {/* =========================================================
           HERO SECTION
       ========================================================== */}
@@ -43,11 +44,10 @@ export default function HeroSection() {
         className="
           relative
           isolate
-          min-h-[400px]
           w-full
-          py-16
           overflow-hidden
-          sm:min-h-[540px]
+          bg-black
+            max-sm:mt-20
           md:min-h-[560px]
           lg:min-h-[600px]
         "
@@ -58,59 +58,100 @@ export default function HeroSection() {
 
         <div
           className="
-            absolute
-            inset-0
-            -z-20
-            bg-top
+            relative
+            h-[220px]
+            w-full
+            shrink-0
             bg-cover
             bg-center
             bg-no-repeat
+
+            sm:h-[280px]
+
+            md:absolute
+            md:inset-0
+            md:-z-20
+            md:h-auto
+            md:bg-top
           "
           style={{
             backgroundImage: "url('/contact/contacthero.png')",
           }}
-        />
+        >
+          {/* Mobile Image Overlay */}
+
+          <div
+            className="
+              absolute
+              inset-0
+              bg-black/10
+
+              md:hidden
+            "
+          />
+
+          <div
+            className="
+              absolute
+              inset-x-0
+              bottom-0
+              h-20
+              bg-gradient-to-t
+              from-black
+              to-transparent
+
+              md:hidden
+            "
+          />
+        </div>
 
         {/* =========================================================
             DARK OVERLAY
         ========================================================== */}
 
-        <div className="absolute inset-0 -z-10 bg-black/10" />
+        <div className="absolute inset-0 -z-10 hidden bg-black/10 md:block" />
 
         {/* =========================================================
             SUBTLE GRADIENT OVERLAY
         ========================================================== */}
 
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/20 via-black/45 to-black/20" />
+        <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-black/20 via-black/45 to-black/20 md:block" />
 
         {/* =========================================================
             HERO CONTENT
         ========================================================== */}
 
         <div
-          className="
-            mx-auto
-            flex
-            min-h-[460px]
-            w-full
-            max-w-7xl
-            items-center
-            justify-center
-            px-4
-            py-12
-            text-center
-            sm:min-h-[500px]
-            sm:px-6
-            sm:py-14
-            md:min-h-[520px]
-            md:px-8
-            md:py-16
-            lg:min-h-[560px]
-            lg:px-10
-            lg:py-18
-            xl:min-h-[580px]
-          "
-        >
+  className="
+    relative
+    z-10
+    mx-auto
+    flex
+    min-h-0
+    w-full
+    max-w-7xl
+    items-center
+    justify-center
+    px-4
+    py-8
+    text-center
+
+    sm:px-6
+    sm:py-10
+
+    md:min-h-[520px]
+    md:translate-y-6
+    md:px-8
+    md:py-16
+
+    lg:min-h-[560px]
+    lg:translate-y-8
+    lg:px-10
+    lg:py-18
+
+    xl:min-h-[580px]
+  "
+>
           <div className="w-full max-w-4xl">
             {/* =====================================================
                 BEAVERTEK
@@ -284,4 +325,3 @@ export default function HeroSection() {
     </App_layout>
   );
 }
-

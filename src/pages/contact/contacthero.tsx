@@ -34,9 +34,10 @@ export default function ContactHero() {
 
   return (
     <App_layout>
-       <Head>
-      <title>Beavertek |  Contact</title>
+      <Head>
+        <title>Beavertek | Contact</title>
       </Head>
+
       {/* =========================================================
           CONTACT HERO
       ========================================================= */}
@@ -44,14 +45,15 @@ export default function ContactHero() {
       <section
         className="
           relative
-          h-[380px]
-          min-h-[380px]
+          mt-20
+          flex
+          h-auto
+          min-h-0
+          flex-col
           overflow-hidden
           bg-[#02030D]
-          mt-20
-          sm:h-[395px]
-          sm:min-h-[395px]
 
+          md:block
           md:h-[410px]
           md:min-h-[410px]
 
@@ -68,11 +70,20 @@ export default function ContactHero() {
 
         <div
           className="
-            absolute
-            inset-y-0
-            right-0
+            relative
+            order-1
+            h-[220px]
             w-full
+            shrink-0
+            overflow-hidden
 
+            sm:h-[260px]
+
+            md:absolute
+            md:inset-y-0
+            md:right-0
+            md:order-none
+            md:h-auto
             md:w-[58%]
 
             lg:w-[56%]
@@ -102,11 +113,30 @@ export default function ContactHero() {
               absolute
               inset-y-0
               left-0
+              hidden
               w-[45%]
               bg-gradient-to-r
               from-[#02030D]
               via-[#02030D]/20
               to-transparent
+
+              md:block
+            "
+          />
+
+          {/* Mobile image bottom transition */}
+
+          <div
+            className="
+              absolute
+              inset-x-0
+              bottom-0
+              h-20
+              bg-gradient-to-t
+              from-[#02030D]
+              to-transparent
+
+              md:hidden
             "
           />
 
@@ -131,18 +161,19 @@ export default function ContactHero() {
             inset-y-0
             left-0
             z-[1]
+            hidden
             w-full
+            bg-gradient-to-r
+            from-[#02030D]
+            via-[#02030D]
+            to-transparent
 
+            md:block
             md:w-[62%]
 
             lg:w-[60%]
 
             xl:w-[58%]
-
-            bg-gradient-to-r
-            from-[#02030D]
-            via-[#02030D]
-            to-transparent
           "
         />
 
@@ -171,16 +202,21 @@ export default function ContactHero() {
           className="
             relative
             z-10
+            order-2
             mx-auto
             flex
-            h-full
+            w-full
             max-w-7xl
             items-center
             px-5
+            py-8
 
             sm:px-6
+            sm:py-9
 
+            md:h-full
             md:px-8
+            md:py-0
 
             lg:px-10
 

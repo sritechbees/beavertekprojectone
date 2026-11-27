@@ -47,7 +47,7 @@ export default function HealthcareAiCaseStudy() {
   return (
     <article
       id="healthcare"
-      className="relative isolate scroll-mt-24 overflow-hidden bg-white px-4 py-14 text-[#111827] sm:scroll-mt-28 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-8 lg:py-24"
+      className="relative isolate scroll-mt-20 overflow-hidden bg-white px-4 py-14 text-[#111827] sm:scroll-mt-28 lg:scroll-mt-12 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-8 lg:py-24"
       aria-labelledby="healthcare-title"
     >
       {/* BACKGROUND DETAILS */}
